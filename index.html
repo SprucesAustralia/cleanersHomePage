@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Jobs - Spruces Commercial Cleaning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #004d40; /* Dark teal background */
+            color: white; /* White text for contrast */
+            font-family: 'Open Sans', sans-serif; /* Clean sans-serif font */
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Header Styling */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-family: 'Playfair Display', serif; /* Decorative serif font */
+            font-size: 2.5em; /* Large, bold header */
+            margin: 0;
+        }
+
+        /* Table Container for Responsiveness */
+        .table-container {
+            overflow-x: auto; /* Horizontal scroll on small screens */
+        }
+
+        /* Table Styling */
+        .jobs-table {
+            width: 100%;
+            border-collapse: collapse; /* Clean edges */
+        }
+        .jobs-table th, .jobs-table td {
+            padding: 15px; /* Spacing inside cells */
+            text-align: left; /* Left-aligned text */
+        }
+        .jobs-table th {
+            font-weight: bold; /* Bold headers */
+            text-transform: uppercase; /* Uppercase for distinction */
+        }
+        .jobs-table tr:hover {
+            background-color: #005f50; /* Subtle hover effect for rows */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        /* Button Styling */
+        .btn {
+            background-color: #32CD32; /* Lime green like the attached image */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px; /* Oval-shaped buttons */
+            text-decoration: none; /* Remove underline from links */
+            display: inline-block; /* Proper alignment */
+            transition: background-color 0.3s, transform 0.2s; /* Smooth hover effects */
+        }
+        .btn:hover {
+            background-color: #28a428; /* Darker green on hover */
+            transform: scale(1.05); /* Slight scale-up for cool effect */
+        }
+
+        /* Register Button Container */
+        .register-btn {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Available Jobs</h1>
+    </div>
+
+    <!-- Job Listings Table -->
+    <div class="table-container">
+        <table class="jobs-table">
+            <thead>
+                <tr>
+                    <th>What</th>
+                    <th>When</th>
+                    <th>Where</th>
+                    <th>Pay</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Job 1 -->
+                <tr>
+                    <td>Post construction cleaning</td>
+                    <td>17 March to 25 March</td>
+                    <td>Richlands 4077</td>
+                    <td>1000 AUD</td>
+                    <td>
+                        <a href="https://sprucesaustralia.github.io/Richlands/index.html" class="btn">View More and Apply</a>
+                    </td>
+                </tr>
+                <!-- Job 2 -->
+                <tr>
+                    <td>Post construction cleaning</td>
+                    <td>This Thursday, 6 of March</td>
+                    <td>Suffolk park 2481</td>
+                    <td>400 AUD</td>
+                    <td>
+                        <a href="https://docs.google.com/spreadsheets/d/1w1xJx63eDbwd_gln4hUWTvFDsDIayCfsWPfkxyon6bg/edit?usp=sharing" class="btn">View More and Apply</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Register for Payments Button -->
+    <div class="register-btn">
+        <a href="https://spruces.typeform.com/signup?typeform-source=spruces.co" class="btn">Register for Payments</a>
+    </div>
+</body>
+</html>
