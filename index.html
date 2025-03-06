@@ -8,65 +8,106 @@
     <style>
         body {
             background-color: #004d40; /* Dark teal background */
-            color: white; /* White text for contrast */
-            font-family: 'Open Sans', sans-serif; /* Clean sans-serif font */
+            color: white;
+            font-family: 'Open Sans', sans-serif;
             margin: 0;
             padding: 20px;
+            line-height: 1.6;
         }
 
         /* Header Styling */
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(0, 77, 64, 0.9); /* Slightly transparent background */
+            border-radius: 10px;
         }
         .header h1 {
-            font-family: 'Playfair Display', serif; /* Decorative serif font */
-            font-size: 2.5em; /* Large, bold header */
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
             margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for elegance */
+        }
+
+        /* Steps Section Styling */
+        .steps-section {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(0, 95, 80, 0.8); /* Subtle teal background */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .steps-section .step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            font-size: 1.2em;
+        }
+        .steps-section .arrow {
+            font-size: 1.8em;
+            color: #32CD32;
+            margin: 0 15px;
+        }
+        .steps-section .btn {
+            background-color: #32CD32;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: bold;
+        }
+        .steps-section .btn:hover {
+            background-color: #28a428;
+            transform: scale(1.1);
         }
 
         /* Table Container for Responsiveness */
         .table-container {
-            overflow-x: auto; /* Horizontal scroll on small screens */
+            overflow-x: auto;
+            margin-bottom: 30px;
         }
 
         /* Table Styling */
         .jobs-table {
             width: 100%;
-            border-collapse: collapse; /* Clean edges */
+            border-collapse: collapse;
+            background: rgba(0, 77, 64, 0.7); /* Subtle background for table */
+            border-radius: 10px;
+            overflow: hidden;
         }
         .jobs-table th, .jobs-table td {
-            padding: 15px; /* Spacing inside cells */
-            text-align: left; /* Left-aligned text */
+            padding: 18px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
         .jobs-table th {
-            font-weight: bold; /* Bold headers */
-            text-transform: uppercase; /* Uppercase for distinction */
+            font-weight: bold;
+            text-transform: uppercase;
+            background: rgba(0, 95, 80, 0.9);
         }
         .jobs-table tr:hover {
-            background-color: #005f50; /* Subtle hover effect for rows */
-            transition: background-color 0.3s; /* Smooth transition */
+            background-color: #005f50;
+            transition: background-color 0.3s;
         }
 
         /* Button Styling */
         .btn {
-            background-color: #32CD32; /* Lime green like the attached image */
+            background-color: #32CD32;
             color: white;
-            padding: 10px 20px;
-            border-radius: 50px; /* Oval-shaped buttons */
-            text-decoration: none; /* Remove underline from links */
-            display: inline-block; /* Proper alignment */
-            transition: background-color 0.3s, transform 0.2s; /* Smooth hover effects */
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: bold;
         }
         .btn:hover {
-            background-color: #28a428; /* Darker green on hover */
-            transform: scale(1.05); /* Slight scale-up for cool effect */
-        }
-
-        /* Register Button Container */
-        .register-btn {
-            text-align: center;
-            margin-top: 30px;
+            background-color: #28a428;
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -74,6 +115,20 @@
     <!-- Header -->
     <div class="header">
         <h1>Available Jobs</h1>
+    </div>
+
+    <!-- Steps Section -->
+    <div class="steps-section">
+        <div class="step">
+            <p><strong>Step 1:</strong> Sign Up Now</p>
+            <span class="arrow">→</span>
+            <a href="https://spruces.typeform.com/signup?typeform-source=spruces.co" class="btn">Sign Up</a>
+        </div>
+        <div class="step">
+            <p><strong>Step 2:</strong> Check out the jobs you like!</p>
+            <span class="arrow">→</span>
+            <p>Click the <strong>"View More"</strong> buttons below</p>
+        </div>
     </div>
 
     <!-- Job Listings Table -->
@@ -96,7 +151,7 @@
                     <td>Richlands 4077</td>
                     <td>1000 AUD - 8 to 10 hour days approx - 3 days</td>
                     <td>
-                        <a href="https://sprucesaustralia.github.io/Richlands/index.html" class="btn">View More and Apply</a>
+                        <a href="https://sprucesaustralia.github.io/Richlands/index.html" class="btn">View More</a>
                     </td>
                 </tr>
                 <!-- Job 2 -->
@@ -106,7 +161,7 @@
                     <td>Suffolk park 2481</td>
                     <td>400 AUD - 7 to 9 hour day approx</td>
                     <td>
-                        <a href="https://docs.google.com/spreadsheets/d/1w1xJx63eDbwd_gln4hUWTvFDsDIayCfsWPfkxyon6bg/edit?usp=sharing" class="btn">View More and Apply</a>
+                        <a href="https://docs.google.com/spreadsheets/d/1w1xJx63eDbwd_gln4hUWTvFDsDIayCfsWPfkxyon6bg/edit?usp=sharing" class="btn">View More</a>
                     </td>
                 </tr>
                 <!-- Job 3 -->
@@ -116,7 +171,7 @@
                     <td>47 Benowa Road, Southport QLD 4215</td>
                     <td>35/hour - 6 hour day - 5 days</td>
                     <td>
-                        <a href="https://sprucesaustralia.github.io/Kool-Beanz-Suns-Southport/index.html" class="btn">View More and Apply</a>
+                        <a href="https://sprucesaustralia.github.io/Kool-Beanz-Suns-Southport/index.html" class="btn">View More</a>
                     </td>
                 </tr>
                 <!-- Job 4 -->
@@ -126,26 +181,21 @@
                     <td>140 Ridgeway Ave, Southport QLD 4215</td>
                     <td>35/hour - 2 hour day - 5 days</td>
                     <td>
-                        <a href="https://sprucesaustralia.github.io/Apartment-Building-Coulson-Operations/" class="btn">View More and Apply</a>
+                        <a href="https://sprucesaustralia.github.io/Apartment-Building-Coulson-Operations/" class="btn">View More</a>
                     </td>
                 </tr>
-                <!-- Job 5 (New Job) -->
+                <!-- Job 5 -->
                 <tr>
                     <td>Post Construction Cleaning</td>
                     <td>Starting 27 March</td>
                     <td>21 Duporth Avenue, Maroochydore QLD 4558</td>
                     <td>750 per cleaner - 7 to 9 hour day approx - 2 days</td>
                     <td>
-                        <a href="https://sprucesaustralia.github.io/29-Duporth-Ave.-Maroochydore---Fitout/index.html" class="btn">View More and Apply</a>
+                        <a href="https://sprucesaustralia.github.io/29-Duporth-Ave.-Maroochydore---Fitout/index.html" class="btn">View More</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-    </div>
-
-    <!-- Register for Payments Button -->
-    <div class="register-btn">
-        <a href="https://spruces.typeform.com/signup?typeform-source=spruces.co" class="btn">Register for Payments</a>
     </div>
 </body>
 </html>
