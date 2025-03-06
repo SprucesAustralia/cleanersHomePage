@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Jobs - Spruces Commercial Cleaning</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #004d40; /* Dark teal background */
@@ -20,14 +20,16 @@
             text-align: center;
             margin-bottom: 40px;
             padding: 20px;
-            background: rgba(0, 77, 64, 0.9); /* Slightly transparent background */
+            background: rgba(0, 77, 64, 0.9);
             border-radius: 10px;
         }
         .header h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 2.8em;
             margin: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for elegance */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+            letter-spacing: 2px;
         }
 
         /* Steps Section Styling */
@@ -35,9 +37,8 @@
             text-align: center;
             margin: 30px 0;
             padding: 20px;
-            background: rgba(0, 95, 80, 0.8); /* Subtle teal background */
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 95, 80, 0.8);
+            border-radius: 10px;
         }
         .steps-section .step {
             display: flex;
@@ -69,14 +70,29 @@
         .table-container {
             overflow-x: auto;
             margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* Step 2 Header Row */
+        .step-2-header {
+            background-color: #32CD32; /* Green to match buttons */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 10px 10px 0 0; /* Rounded top corners */
+        }
+        .step-2-header p {
+            margin: 0;
         }
 
         /* Table Styling */
         .jobs-table {
             width: 100%;
             border-collapse: collapse;
-            background: rgba(0, 77, 64, 0.7); /* Subtle background for table */
-            border-radius: 10px;
+            background: rgba(0, 77, 64, 0.7);
+            border-radius: 0 0 10px 10px; /* Rounded bottom corners */
             overflow: hidden;
         }
         .jobs-table th, .jobs-table td {
@@ -124,15 +140,13 @@
             <span class="arrow">→</span>
             <a href="https://spruces.typeform.com/signup?typeform-source=spruces.co" class="btn">Sign Up</a>
         </div>
-        <div class="step">
-            <p><strong>Step 2:</strong> Check out the jobs you like!</p>
-            <span class="arrow">→</span>
-            <p>Click the <strong>"View More"</strong> buttons below</p>
-        </div>
     </div>
 
     <!-- Job Listings Table -->
     <div class="table-container">
+        <div class="step-2-header">
+            <p><strong>Step 2:</strong> Click the "View More" buttons below to see more information of the job</p>
+        </div>
         <table class="jobs-table">
             <thead>
                 <tr>
@@ -140,7 +154,7 @@
                     <th>When</th>
                     <th>Where</th>
                     <th>Pay</th>
-                    <th>Action</th>
+                    <th>ACTION</th>
                 </tr>
             </thead>
             <tbody>
