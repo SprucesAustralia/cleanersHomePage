@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spruces Sign-Up</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Add Supabase JavaScript Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         /* Base Styles */
@@ -250,6 +251,8 @@
             <form id="form1">
                 <label for="full-name">What’s your full name?</label>
                 <input type="text" id="full-name" required>
+                <label for="email">What’s your email address?</label>
+                <input type="email" id="email" required>
                 <label for="phone">What’s your phone number?</label>
                 <input type="tel" id="phone" required>
                 <label for="birthday">Birthday - or you will miss out on presents 🎂</label>
@@ -257,8 +260,75 @@
                 <label for="nationality">Please select your country of origin: (Nationality)</label>
                 <select id="nationality" required>
                     <option value="">Select country</option>
+                    <option value="Afghanistan">Afghanistan</option>
+                    <option value="Albania">Albania</option>
+                    <option value="Algeria">Algeria</option>
+                    <option value="Argentina">Argentina</option>
                     <option value="Australia">Australia</option>
-                    <!-- Add other countries as needed -->
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Chile">Chile</option>
+                    <option value="China">China</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Cyprus">Cyprus</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="Ethiopia">Ethiopia</option>
+                    <option value="Fiji">Fiji</option>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Greece">Greece</option>
+                    <option value="Hong Kong">Hong Kong</option>
+                    <option value="Hungary">Hungary</option>
+                    <option value="India">India</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Iran">Iran</option>
+                    <option value="Iraq">Iraq</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Israel">Israel</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Kazakhstan">Kazakhstan</option>
+                    <option value="Korea, Republic of (South Korea)">Korea, Republic of (South Korea)</option>
+                    <option value="Kosovo">Kosovo</option>
+                    <option value="Lebanon">Lebanon</option>
+                    <option value="Lithuania">Lithuania</option>
+                    <option value="Malaysia">Malaysia</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Morocco">Morocco</option>
+                    <option value="Myanmar">Myanmar</option>
+                    <option value="Nepal">Nepal</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Papua New Guinea">Papua New Guinea</option>
+                    <option value="Peru">Peru</option>
+                    <option value="Philippines">Philippines</option>
+                    <option value="Poland">Poland</option>
+                    <option value="Romania">Romania</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Scotland">Scotland</option>
+                    <option value="Serbia">Serbia</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Slovenia">Slovenia</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="South Sudan">South Sudan</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Sri Lanka">Sri Lanka</option>
+                    <option value="Sudan">Sudan</option>
+                    <option value="Sweden">Sweden</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="Taiwan">Taiwan</option>
+                    <option value="Thailand">Thailand</option>
+                    <option value="Turkey">Turkey</option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
+                    <option value="United States">United States</option>
+                    <option value="Vietnam">Vietnam</option>
+                    <option value="Wales">Wales</option>
+                    <option value="Zimbabwe">Zimbabwe</option>
+                    <option value="Other">Other... (sorry we run out of space!)</option>
                 </select>
             </form>
             <button onclick="prevSection()">Back</button>
@@ -315,19 +385,19 @@
                     <option value="just-started">Just started!</option>
                     <option value="couple-months">Couple of months</option>
                     <option value="6-months">About 6 Months</option>
-                    <option value="1-year">Around 1 Year</option>
-                    <option value="2-years">Around 2 Years</option>
-                    <option value="more-2-years">More than 2 years</option>
+                    <option value="1-year">around 1 Year</option>
+                    <option value="2-years">around 2 Years</option>
+                    <option value="more-2-years">more than 2 years</option>
                     <option value="whole-life">My whole life!</option>
                 </select>
                 <fieldset>
                     <legend>How quickly do you feel you can pick up professional cleaning skills?</legend>
                     <input type="radio" id="pickup-skills-shadow" name="pickup-skills" value="shadow" required>
-                    <label for="pickup-skills-shadow" class="icon-label"><i class="fas fa-user-friends"></i> I just need to shadow someone</label>
+                    <label for="pickup-skills-shadow" class="icon-label"><i class="fas fa-user-friends"></i> I just need to shadow (follow) someone and I will eventually pick it up</label>
                     <input type="radio" id="pickup-skills-videos" name="pickup-skills" value="videos">
-                    <label for="pickup-skills-videos" class="icon-label"><i class="fas fa-video"></i> I watch training videos</label>
+                    <label for="pickup-skills-videos" class="icon-label"><i class="fas fa-video"></i> I am very resourceful! I have been watching training videos and I think I will pick it up quickly!</label>
                     <input type="radio" id="pickup-skills-training" name="pickup-skills" value="training">
-                    <label for="pickup-skills-training" class="icon-label"><i class="fas fa-chalkboard-teacher"></i> I need in-person training</label>
+                    <label for="pickup-skills-training" class="icon-label"><i class="fas fa-chalkboard-teacher"></i> If I receive a couple of weeks worth of in-person training I'll be fine!</label>
                 </fieldset>
                 <label for="other-jobs">What other jobs have you done?</label>
                 <textarea id="other-jobs" required></textarea>
@@ -344,10 +414,10 @@
                 <input type="text" id="last-employer" required>
                 <label for="employer-duration">And for how long?</label>
                 <input type="text" id="employer-duration" required>
-                <label for="roles">What were your roles and responsibilities?</label>
+                <label for="roles">What were your roles and responsibilities in that job?</label>
                 <textarea id="roles" required></textarea>
                 <fieldset>
-                    <legend>Can we contact them for a reference check?</legend>
+                    <legend>Are you cool for us to contact as part of your reference check? <br><small>*We need a minimum of 2 verified references in Australia - they will be verified by our team, mobile phones are not suitable, it must be a 1300 number or landline (08,07,04 numbers)</small></legend>
                     <input type="radio" id="contact-employer-yes" name="contact-employer" value="yes" required>
                     <label for="contact-employer-yes" class="icon-label"><i class="fas fa-check"></i> Yes</label>
                     <input type="radio" id="contact-employer-no" name="contact-employer" value="no">
@@ -363,14 +433,25 @@
             <h2>What cleaning skills do you bring?</h2>
             <form id="form5">
                 <fieldset>
-                    <legend>What tools have you used before?</legend>
+                    <legend>What tools have you used before? Tick as many as you can</legend>
                     <input type="checkbox" id="tools-chemicals" name="tools" value="chemicals">
                     <label for="tools-chemicals" class="icon-label"><i class="fas fa-flask"></i> Cleaning chemicals</label>
                     <input type="checkbox" id="tools-mop-bucket" name="tools" value="mop-bucket">
                     <label for="tools-mop-bucket" class="icon-label"><i class="fas fa-broom"></i> Mop and bucket</label>
                     <input type="checkbox" id="tools-backpack-vacuum" name="tools" value="backpack-vacuum">
                     <label for="tools-backpack-vacuum" class="icon-label"><i class="fas fa-vacuum"></i> Backpack Vacuum</label>
-                    <!-- Add more tools as needed -->
+                    <input type="checkbox" id="tools-common-materials" name="tools" value="common-materials">
+                    <label for="tools-common-materials" class="icon-label"><i class="fas fa-tools"></i> Common materials</label>
+                    <input type="checkbox" id="tools-window-tools" name="tools" value="window-tools">
+                    <label for="tools-window-tools" class="icon-label"><i class="fas fa-window-cleaner"></i> Window Cleaning tools</label>
+                    <input type="checkbox" id="tools-micro-fiber-mop" name="tools" value="micro-fiber-mop">
+                    <label for="tools-micro-fiber-mop" class="icon-label"><i class="fas fa-mop"></i> Micro Fiber mop</label>
+                    <input type="checkbox" id="tools-push-vacuum" name="tools" value="push-vacuum">
+                    <label for="tools-push-vacuum" class="icon-label"><i class="fas fa-vacuum"></i> Push Vacuum</label>
+                    <input type="checkbox" id="tools-other-machines" name="tools" value="other-machines">
+                    <label for="tools-other-machines" class="icon-label"><i class="fas fa-cogs"></i> Other including machines</label>
+                    <input type="checkbox" id="tools-body-camera" name="tools" value="body-camera">
+                    <label for="tools-body-camera" class="icon-label"><i class="fas fa-camera"></i> BodyCamera</label>
                 </fieldset>
                 <fieldset>
                     <legend>In what areas of cleaning do you feel most comfortable?</legend>
@@ -378,15 +459,41 @@
                     <label for="comfort-office" class="icon-label"><i class="fas fa-building"></i> Office area</label>
                     <input type="checkbox" id="comfort-floors" name="comfort-areas" value="floors">
                     <label for="comfort-floors" class="icon-label"><i class="fas fa-floor"></i> Floors</label>
-                    <!-- Add more areas as needed -->
+                    <input type="checkbox" id="comfort-kitchens" name="comfort-areas" value="kitchens">
+                    <label for="comfort-kitchens" class="icon-label"><i class="fas fa-kitchen-set"></i> Kitchens</label>
+                    <input type="checkbox" id="comfort-common-areas" name="comfort-areas" value="common-areas">
+                    <label for="comfort-common-areas" class="icon-label"><i class="fas fa-users"></i> Building common areas</label>
+                    <input type="checkbox" id="comfort-windows" name="comfort-areas" value="windows">
+                    <label for="comfort-windows" class="icon-label"><i class="fas fa-window-maximize"></i> Windows</label>
+                    <input type="checkbox" id="comfort-outdoors" name="comfort-areas" value="outdoors">
+                    <label for="comfort-outdoors" class="icon-label"><i class="fas fa-tree"></i> Outdoors</label>
+                    <input type="checkbox" id="comfort-room-making" name="comfort-areas" value="room-making">
+                    <label for="comfort-room-making" class="icon-label"><i class="fas fa-bed"></i> Room making</label>
+                    <input type="checkbox" id="comfort-toilets" name="comfort-areas" value="toilets">
+                    <label for="comfort-toilets" class="icon-label"><i class="fas fa-toilet"></i> Toilets</label>
+                    <input type="checkbox" id="comfort-deep-clean" name="comfort-areas" value="deep-clean">
+                    <label for="comfort-deep-clean" class="icon-label"><i class="fas fa-spray-can"></i> Deep Clean</label>
                 </fieldset>
                 <fieldset>
-                    <legend>In what areas would you like training?</legend>
+                    <legend>In what areas of cleaning would you like training?</legend>
                     <input type="checkbox" id="training-office" name="training-areas" value="office">
                     <label for="training-office" class="icon-label"><i class="fas fa-building"></i> Office area</label>
                     <input type="checkbox" id="training-floors" name="training-areas" value="floors">
                     <label for="training-floors" class="icon-label"><i class="fas fa-floor"></i> Floors</label>
-                    <!-- Add more areas as needed -->
+                    <input type="checkbox" id="training-kitchens" name="training-areas" value="kitchens">
+                    <label for="training-kitchens" class="icon-label"><i class="fas fa-kitchen-set"></i> Kitchens</label>
+                    <input type="checkbox" id="training-common-areas" name="training-areas" value="common-areas">
+                    <label for="training-common-areas" class="icon-label"><i class="fas fa-users"></i> Building common areas</label>
+                    <input type="checkbox" id="training-windows" name="training-areas" value="windows">
+                    <label for="training-windows" class="icon-label"><i class="fas fa-window-maximize"></i> Windows</label>
+                    <input type="checkbox" id="training-outdoors" name="training-areas" value="outdoors">
+                    <label for="training-outdoors" class="icon-label"><i class="fas fa-tree"></i> Outdoors</label>
+                    <input type="checkbox" id="training-room-making" name="training-areas" value="room-making">
+                    <label for="training-room-making" class="icon-label"><i class="fas fa-bed"></i> Room making</label>
+                    <input type="checkbox" id="training-toilets" name="training-areas" value="toilets">
+                    <label for="training-toilets" class="icon-label"><i class="fas fa-toilet"></i> Toilets</label>
+                    <input type="checkbox" id="training-deep-clean" name="training-areas" value="deep-clean">
+                    <label for="training-deep-clean" class="icon-label"><i class="fas fa-spray-can"></i> Deep Clean</label>
                 </fieldset>
                 <label for="prioritize-tasks">How do you prioritize tasks on a busy day?</label>
                 <textarea id="prioritize-tasks" required></textarea>
@@ -402,12 +509,13 @@
             <h2>How do you like to work?</h2>
             <form id="form6">
                 <fieldset>
-                    <legend>How are you most comfortable working?</legend>
+                    <legend>How are you most comfortable working? alone... teams..</legend>
                     <input type="checkbox" id="work-style-paired" name="work-style" value="paired">
                     <label for="work-style-paired" class="icon-label"><i class="fas fa-user-friends"></i> Paired with someone</label>
                     <input type="checkbox" id="work-style-alone" name="work-style" value="alone">
                     <label for="work-style-alone" class="icon-label"><i class="fas fa-user"></i> Alone</label>
-                    <!-- Add more options as needed -->
+                    <input type="checkbox" id="work-style-larger-teams" name="work-style" value="larger-teams">
+                    <label for="work-style-larger-teams" class="icon-label"><i class="fas fa-users"></i> Larger teams</label>
                 </fieldset>
                 <fieldset>
                     <legend>Experience with cleaning schedules?</legend>
@@ -417,12 +525,22 @@
                     <label for="schedule-experience-no" class="icon-label"><i class="fas fa-times"></i> No</label>
                 </fieldset>
                 <fieldset>
-                    <legend>What would you prioritize cleaning first?</legend>
+                    <legend>What would you prioritize cleaning first if you have a short amount of time? - you can only select 3</legend>
+                    <p id="priority-note">Select up to 3</p>
                     <input type="checkbox" id="priority-toilets" name="priority" value="toilets">
                     <label for="priority-toilets" class="icon-label"><i class="fas fa-toilet"></i> Toilets</label>
                     <input type="checkbox" id="priority-rubbish" name="priority" value="rubbish">
-                    <label for="priority-rubbish" class="icon-label"><i class="fas fa-trash"></i> Taking out rubbish</label>
-                    <!-- Add more options as needed -->
+                    <label for="priority-rubbish" class="icon-label"><i class="fas fa-trash"></i> taking out rubbish</label>
+                    <input type="checkbox" id="priority-kitchen" name="priority" value="kitchen">
+                    <label for="priority-kitchen" class="icon-label"><i class="fas fa-kitchen-set"></i> kitchen</label>
+                    <input type="checkbox" id="priority-entrance" name="priority" value="entrance">
+                    <label for="priority-entrance" class="icon-label"><i class="fas fa-door-open"></i> Entrance to the building</label>
+                    <input type="checkbox" id="priority-doors" name="priority" value="doors">
+                    <label for="priority-doors" class="icon-label"><i class="fas fa-door-closed"></i> Doors</label>
+                    <input type="checkbox" id="priority-store-room" name="priority" value="store-room">
+                    <label for="priority-store-room" class="icon-label"><i class="fas fa-boxes"></i> Store room</label>
+                    <input type="checkbox" id="priority-vents" name="priority" value="vents">
+                    <label for="priority-vents" class="icon-label"><i class="fas fa-wind"></i> Vents</label>
                 </fieldset>
             </form>
             <button onclick="prevSection()">Back</button>
@@ -434,7 +552,7 @@
             <h2>A few more details</h2>
             <form id="form7">
                 <fieldset>
-                    <legend>Do you have a car?</legend>
+                    <legend>Do you have a car? Don't panic there is always a solution</legend>
                     <input type="radio" id="car-ownership-yes" name="car-ownership" value="yes" required>
                     <label for="car-ownership-yes" class="icon-label"><i class="fas fa-car"></i> Yes</label>
                     <input type="radio" id="car-ownership-no" name="car-ownership" value="no">
@@ -458,11 +576,9 @@
         <div id="section8" class="section hidden">
             <h2>Create Your Account</h2>
             <form id="form8">
-                <label for="signup-email">Email Address</label>
-                <input type="email" id="signup-email" required>
-                <label for="password">Password</label>
+                <label for="password">Choose a password</label>
                 <input type="password" id="password" required>
-                <label for="confirm-password">Confirm Password</label>
+                <label for="confirm-password">Confirm password</label>
                 <input type="password" id="confirm-password" required>
             </form>
             <button onclick="prevSection()">Back</button>
@@ -473,113 +589,160 @@
         <div id="section9" class="section hidden">
             <h2>NON-DISCLOSURE AGREEMENT</h2>
             <form id="form9">
-                <p><strong>Confidential Information</strong></p>
-                <p>For the purposes of this Agreement, “Confidential Information” refers to any non-public information disclosed by the Client to the Cleaner during or as part of their engagement.</p>
-                <!-- Add full NDA text as needed -->
+                <p><strong>1. Confidential Information</strong></p>
+                <p>For the purposes of this Agreement, “Confidential Information” refers to any non-public information disclosed by the Client to the Cleaner during or as part of their engagement, including but not limited to access codes, security details, personal or sensitive information, and details about the Client’s premises.</p>
+
+                <p><strong>2. Obligations</strong></p>
+                <p>The Cleaner agrees to:</p>
+                <ul>
+                    <li>a) Keep all Confidential Information strictly confidential.</li>
+                    <li>b) Use the Confidential Information solely for performing cleaning services as agreed with the Client.</li>
+                    <li>c) Not disclose or share any Confidential Information with third parties without the Client’s written consent.</li>
+                    <li>d) Before & after videos, or other documentation are required for every job. Without clear visual evidence of the work, the cleaner will not be paid.</li>
+                </ul>
+
+                <p><strong>3. Exceptions</strong></p>
+                <p>Confidential Information does not include information that:</p>
+                <ul>
+                    <li>a) Is publicly available at the time of disclosure.</li>
+                    <li>b) Becomes publicly available without breach of this Agreement.</li>
+                    <li>c) Is required to be disclosed by law or court order (with prior notice to the Client, where possible).</li>
+                </ul>
+
+                <p><strong>4. Duration</strong></p>
+                <p>This Agreement remains in effect for the duration of the Cleaner’s engagement with the Client and for a period of [1/2/3] years after termination of the engagement.</p>
+
+                <p><strong>5. Return of Information</strong></p>
+                <p>Upon termination of the Cleaner’s services, the Cleaner agrees to return or securely destroy all Confidential Information in their possession.</p>
+
+                <p><strong>6. Governing Law</strong></p>
+                <p>The laws of Australia govern this Agreement.</p>
+
+                <p><strong>7. Electronic Agreement</strong></p>
+                <p><span id="nda-name"></span> from <span id="nda-address"></span> <span id="nda-address2"></span> <span id="nda-city"></span> with DOB <span id="nda-dob"></span></p>
+                <p>Note: By accepting, you are electronically signing this agreement.</p>
+
                 <fieldset>
                     <legend>Do you accept the terms of the Non-Disclosure Agreement?</legend>
-                    <input type="radio" id="nda-accept" name="nda" value="accept" required>
+                    <input type="radio" id="nda-accept" name="nda" value="accept">
                     <label for="nda-accept" class="icon-label"><i class="fas fa-check"></i> I accept</label>
                     <input type="radio" id="nda-decline" name="nda" value="decline">
                     <label for="nda-decline" class="icon-label"><i class="fas fa-times"></i> I don't accept</label>
                 </fieldset>
             </form>
             <button onclick="prevSection()">Back</button>
-            <button onclick="submitSignUp()">Submit</button>
+            <button onclick="submitForm()">Submit</button>
         </div>
     </div>
 
     <script>
-        // Initialize Supabase client (replace with your credentials)
-        const supabase = Supabase.createClient('https://cuoqvccjoymctjucrhbb.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA');
-
-        // Define sections and initialize variables
+        // Updated sections array with new section8 and shifted NDA to section9
         const sections = ['welcome', 'section1', 'section2', 'section3', 'section4', 'section5', 'section6', 'section7', 'section8', 'section9'];
         let currentSection = 0;
-        const signUpData = {};
+        let formData = {};
 
-        // Update progress bar
+        // Initialize Supabase client with provided URL and anon key
+        const supabase = Supabase.createClient(
+            'https://cuoqvccjoymctjucrhbb.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA'
+        );
+
         function updateProgress() {
             const progress = (currentSection / (sections.length - 1)) * 100;
             document.getElementById('progress').style.width = `${progress}%`;
         }
 
-        // Show a specific section
         function showSection(index) {
             document.querySelectorAll('.section').forEach((section, i) => {
                 section.classList.toggle('active', i === index);
                 section.classList.toggle('hidden', i !== index);
             });
+            // Populate NDA fields when showing section9
+            if (index === 9) {
+                const fullName = formData.full_name || document.getElementById('full-name').value;
+                const street = formData.street || document.getElementById('street').value;
+                const addressLine2 = formData.address_line2 || document.getElementById('address-line2').value || '';
+                const city = formData.city || document.getElementById('city').value;
+                const birthday = formData.birthday || document.getElementById('birthday').value;
+                document.getElementById('nda-name').innerText = fullName;
+                document.getElementById('nda-address').innerText = street;
+                document.getElementById('nda-address2').innerText = addressLine2;
+                document.getElementById('nda-city').innerText = city;
+                document.getElementById('nda-dob').innerText = birthday;
+            }
             updateProgress();
         }
 
-        // Start the application
         function startApplication() {
             showSection(1);
             currentSection = 1;
         }
 
         // Collect form data from each section
-        function collectSectionData(sectionId) {
-            if (sectionId === 1) {
-                signUpData.full_name = document.getElementById('full-name').value;
-                signUpData.phone = document.getElementById('phone').value;
-                signUpData.birthday = document.getElementById('birthday').value;
-                signUpData.nationality = document.getElementById('nationality').value;
-            } else if (sectionId === 2) {
-                signUpData.street = document.getElementById('street').value;
-                signUpData.address_line2 = document.getElementById('address-line2').value;
-                signUpData.city = document.getElementById('city').value;
-                signUpData.state = document.getElementById('state').value;
-            } else if (sectionId === 3) {
-                signUpData.cleaning_type = Array.from(document.querySelectorAll('input[name="cleaning-type"]:checked')).map(cb => cb.value);
-                signUpData.experience_duration = document.getElementById('experience-duration').value;
-                signUpData.pickup_skills = document.querySelector('input[name="pickup-skills"]:checked')?.value || '';
-                signUpData.other_jobs = document.getElementById('other-jobs').value;
-            } else if (sectionId === 4) {
-                signUpData.last_employer = document.getElementById('last-employer').value;
-                signUpData.employer_duration = document.getElementById('employer-duration').value;
-                signUpData.roles = document.getElementById('roles').value;
-                signUpData.contact_employer = document.querySelector('input[name="contact-employer"]:checked')?.value || '';
-            } else if (sectionId === 5) {
-                signUpData.tools = Array.from(document.querySelectorAll('input[name="tools"]:checked')).map(cb => cb.value);
-                signUpData.comfort_areas = Array.from(document.querySelectorAll('input[name="comfort-areas"]:checked')).map(cb => cb.value);
-                signUpData.training_areas = Array.from(document.querySelectorAll('input[name="training-areas"]:checked')).map(cb => cb.value);
-                signUpData.prioritize_tasks = document.getElementById('prioritize-tasks').value;
-                signUpData.cleaning_challenge = document.getElementById('cleaning-challenge').value;
-            } else if (sectionId === 6) {
-                signUpData.work_style = Array.from(document.querySelectorAll('input[name="work-style"]:checked')).map(cb => cb.value);
-                signUpData.schedule_experience = document.querySelector('input[name="schedule-experience"]:checked')?.value || '';
-                signUpData.priority = Array.from(document.querySelectorAll('input[name="priority"]:checked')).map(cb => cb.value);
-            } else if (sectionId === 7) {
-                signUpData.car_ownership = document.querySelector('input[name="car-ownership"]:checked')?.value || '';
-                signUpData.work_with_others = document.querySelector('input[name="work-with-others"]:checked')?.value || '';
-            } else if (sectionId === 8) {
-                signUpData.email = document.getElementById('signup-email').value;
-                signUpData.password = document.getElementById('password').value;
-                signUpData.confirm_password = document.getElementById('confirm-password').value;
-            } else if (sectionId === 9) {
-                signUpData.nda_accept = document.querySelector('input[name="nda"]:checked')?.value === 'accept';
+        function collectData(sectionIndex) {
+            if (sectionIndex === 1) {
+                formData.full_name = document.getElementById('full-name').value;
+                formData.email = document.getElementById('email').value;
+                formData.phone = document.getElementById('phone').value;
+                formData.birthday = document.getElementById('birthday').value;
+                formData.nationality = document.getElementById('nationality').value;
+            } else if (sectionIndex === 2) {
+                formData.street = document.getElementById('street').value;
+                formData.address_line2 = document.getElementById('address-line2').value;
+                formData.city = document.getElementById('city').value;
+                formData.state = document.getElementById('state').value;
+            } else if (sectionIndex === 3) {
+                formData.cleaning_type = Array.from(document.querySelectorAll('input[name="cleaning-type"]:checked')).map(cb => cb.value);
+                formData.experience_duration = document.getElementById('experience-duration').value;
+                formData.pickup_skills = document.querySelector('input[name="pickup-skills"]:checked')?.value;
+                formData.other_jobs = document.getElementById('other-jobs').value;
+            } else if (sectionIndex === 4) {
+                formData.last_employer = document.getElementById('last-employer').value;
+                formData.employer_duration = document.getElementById('employer-duration').value;
+                formData.roles = document.getElementById('roles').value;
+                formData.contact_employer = document.querySelector('input[name="contact-employer"]:checked')?.value;
+            } else if (sectionIndex === 5) {
+                formData.tools = Array.from(document.querySelectorAll('input[name="tools"]:checked')).map(cb => cb.value);
+                formData.comfort_areas = Array.from(document.querySelectorAll('input[name="comfort-areas"]:checked')).map(cb => cb.value);
+                formData.training_areas = Array.from(document.querySelectorAll('input[name="training-areas"]:checked')).map(cb => cb.value);
+                formData.prioritize_tasks = document.getElementById('prioritize-tasks').value;
+                formData.cleaning_challenge = document.getElementById('cleaning-challenge').value;
+            } else if (sectionIndex === 6) {
+                formData.work_style = Array.from(document.querySelectorAll('input[name="work-style"]:checked')).map(cb => cb.value);
+                formData.schedule_experience = document.querySelector('input[name="schedule-experience"]:checked')?.value;
+                formData.priority = Array.from(document.querySelectorAll('input[name="priority"]:checked')).map(cb => cb.value);
+            } else if (sectionIndex === 7) {
+                formData.car_ownership = document.querySelector('input[name="car-ownership"]:checked')?.value;
+                formData.work_with_others = document.querySelector('input[name="work-with-others"]:checked')?.value;
+            } else if (sectionIndex === 8) {
+                formData.password = document.getElementById('password').value;
+            } else if (sectionIndex === 9) {
+                formData.nda_accept = document.querySelector('input[name="nda"]:checked')?.value === 'accept';
             }
         }
 
-        // Navigate to the next section
         function nextSection() {
             const form = document.getElementById(`form${currentSection}`);
             if (form && !form.checkValidity()) {
                 form.reportValidity();
                 return;
             }
+            // Validate passwords match in section8
+            if (currentSection === 8) {
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+            }
+            collectData(currentSection);
             if (currentSection < sections.length - 1) {
-                collectSectionData(currentSection);
                 showSection(currentSection + 1);
                 currentSection++;
-            } else {
-                submitSignUp();
             }
         }
 
-        // Navigate to the previous section
         function prevSection() {
             if (currentSection > 0) {
                 showSection(currentSection - 1);
@@ -587,79 +750,83 @@
             }
         }
 
-        // Submit the sign-up data to Supabase
-        async function submitSignUp() {
-            collectSectionData(9); // Collect NDA data
-
-            // Validate NDA acceptance
-            if (!signUpData.nda_accept) {
+        // Submit form data to Supabase
+        async function submitForm() {
+            collectData(9); // Collect NDA acceptance
+            if (!formData.nda_accept) {
                 alert('You must accept the NDA to submit the form.');
                 return;
             }
 
-            // Validate password match
-            if (signUpData.password !== signUpData.confirm_password) {
-                alert('Passwords do not match.');
-                return;
-            }
-
-            // Sign up with Supabase Authentication
-            const { data: authData, error: authError } = await supabase.auth.signUp({
-                email: signUpData.email,
-                password: signUpData.password
+            // Sign up the user with Supabase Auth
+            const { data, error } = await supabase.auth.signUp({
+                email: formData.email,
+                password: formData.password
             });
 
-            if (authError) {
-                alert('Error signing up: ' + authError.message);
+            if (error) {
+                alert('Error signing up: ' + error.message);
                 return;
             }
 
-            const user = authData.user;
+            const user = data.user;
 
-            // Insert additional data into cleaners table
+            // Insert form data into the cleaners table
             const { error: insertError } = await supabase
                 .from('cleaners')
                 .insert({
                     id: user.id,
-                    full_name: signUpData.full_name,
-                    phone: signUpData.phone,
-                    birthday: signUpData.birthday,
-                    nationality: signUpData.nationality,
-                    street: signUpData.street,
-                    address_line2: signUpData.address_line2,
-                    city: signUpData.city,
-                    state: signUpData.state,
-                    cleaning_type: signUpData.cleaning_type,
-                    experience_duration: signUpData.experience_duration,
-                    pickup_skills: signUpData.pickup_skills,
-                    other_jobs: signUpData.other_jobs,
-                    last_employer: signUpData.last_employer,
-                    employer_duration: signUpData.employer_duration,
-                    roles: signUpData.roles,
-                    contact_employer: signUpData.contact_employer,
-                    tools: signUpData.tools,
-                    comfort_areas: signUpData.comfort_areas,
-                    training_areas: signUpData.training_areas,
-                    prioritize_tasks: signUpData.prioritize_tasks,
-                    cleaning_challenge: signUpData.cleaning_challenge,
-                    work_style: signUpData.work_style,
-                    schedule_experience: signUpData.schedule_experience,
-                    priority: signUpData.priority,
-                    car_ownership: signUpData.car_ownership,
-                    work_with_others: signUpData.work_with_others,
-                    nda_accept: signUpData.nda_accept
+                    full_name: formData.full_name,
+                    phone: formData.phone,
+                    birthday: formData.birthday,
+                    nationality: formData.nationality,
+                    street: formData.street,
+                    address_line2: formData.address_line2,
+                    city: formData.city,
+                    state: formData.state,
+                    cleaning_type: formData.cleaning_type,
+                    experience_duration: formData.experience_duration,
+                    pickup_skills: formData.pickup_skills,
+                    other_jobs: formData.other_jobs,
+                    last_employer: formData.last_employer,
+                    employer_duration: formData.employer_duration,
+                    roles: formData.roles,
+                    contact_employer: formData.contact_employer,
+                    tools: formData.tools,
+                    comfort_areas: formData.comfort_areas,
+                    training_areas: formData.training_areas,
+                    prioritize_tasks: formData.prioritize_tasks,
+                    cleaning_challenge: formData.cleaning_challenge,
+                    work_style: formData.work_style,
+                    schedule_experience: formData.schedule_experience,
+                    priority: formData.priority,
+                    car_ownership: formData.car_ownership,
+                    work_with_others: formData.work_with_others,
+                    nda_accept: formData.nda_accept
                 });
 
             if (insertError) {
                 alert('Error saving data: ' + insertError.message);
             } else {
-                alert('Sign up successful! You can now log in.');
-                // Optionally redirect to login page
+                alert('Sign up successful! Please check your email to confirm your account.');
+                // Optional: Redirect to login page
                 // window.location.href = 'login.html';
             }
         }
 
-        // Show the initial section
+        document.addEventListener('DOMContentLoaded', function() {
+            const priorityCheckboxes = document.querySelectorAll('input[name="priority"]');
+            priorityCheckboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    const checkedCount = document.querySelectorAll('input[name="priority"]:checked').length;
+                    if (checkedCount > 3) {
+                        this.checked = false;
+                        alert('You can only select up to 3 priorities.');
+                    }
+                });
+            });
+        });
+
         showSection(0);
     </script>
 </body>
