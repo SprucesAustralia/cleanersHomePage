@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spruces Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            background-color: #F2F2F7;
+            color: #1D1D1F;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 25px;
+            background-color: #FFFFFF;
+            border-radius: 25px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        h1 {
+            color: #1D1D1F;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        p {
+            color: #6E6E73;
+            margin-bottom: 25px;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #1D1D1F;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #D2D2D7;
+            border-radius: 12px;
+            font-size: 1em;
+            background-color: #F7F7F9;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #28A745;
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+            outline: none;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .forgot-password a {
+            color: #28A745;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background: linear-gradient(135deg, #28A745, #34D058);
+            color: #FFFFFF;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        .signup-link {
+            margin-top: 20px;
+            color: #6E6E73;
+        }
+
+        .signup-link a {
+            color: #28A745;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome Back to Spruces</h1>
+        <p>Log in to continue your journey with us.</p>
+        <form id="login-form">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+            <div class="forgot-password">
+                <a href="#" id="forgot-password">Forgot Password?</a>
+            </div>
+            <button type="submit">Log In</button>
+        </form>
+        <div class="signup-link">
+            Don’t have an account? <a href="#">Sign Up</a>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Supabase client (replace with your credentials)
+        const supabase = Supabase.createClient('https://cuoqvccjoymctjucrhbb.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA');
+
+        // Handle login form submission
+        document.getElementById('login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password
+            });
+
+            if (error) {
+                alert('Login failed: ' + error.message);
+            } else {
+                // Redirect to Available Jobs page
+                window.location.href = 'https://sprucesaustralia.github.io/cleanersHomePage/';
+            }
+        });
+
+        // Optional: Handle forgot password (uncomment to enable)
+        /*
+        document.getElementById('forgot-password').addEventListener('click', async function(e) {
+            e.preventDefault();
+            const email = prompt('Enter your email address:');
+            if (email) {
+                const { error } = await supabase.auth.resetPasswordForEmail(email);
+                if (error) {
+                    alert('Error sending reset email: ' + error.message);
+                } else {
+                    alert('Reset email sent. Check your inbox.');
+                }
+            }
+        });
+        */
+    </script>
+</body>
+</html>
