@@ -636,12 +636,11 @@
     </div>
 
     <script>
-        // Updated sections array with new section8 and shifted NDA to section9
         const sections = ['welcome', 'section1', 'section2', 'section3', 'section4', 'section5', 'section6', 'section7', 'section8', 'section9'];
         let currentSection = 0;
         let formData = {};
 
-        // Initialize Supabase client with provided URL and anon key
+        // Initialize Supabase client
         const supabase = Supabase.createClient(
             'https://cuoqvccjoymctjucrhbb.supabase.co',
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA'
@@ -657,7 +656,6 @@
                 section.classList.toggle('active', i === index);
                 section.classList.toggle('hidden', i !== index);
             });
-            // Populate NDA fields when showing section9
             if (index === 9) {
                 const fullName = formData.full_name || document.getElementById('full-name').value;
                 const street = formData.street || document.getElementById('street').value;
@@ -678,7 +676,6 @@
             currentSection = 1;
         }
 
-        // Collect form data from each section
         function collectData(sectionIndex) {
             if (sectionIndex === 1) {
                 formData.full_name = document.getElementById('full-name').value;
@@ -727,7 +724,6 @@
                 form.reportValidity();
                 return;
             }
-            // Validate passwords match in section8
             if (currentSection === 8) {
                 const password = document.getElementById('password').value;
                 const confirmPassword = document.getElementById('confirm-password').value;
@@ -750,28 +746,23 @@
             }
         }
 
-        // Submit form data to Supabase
         async function submitForm() {
-            collectData(9); // Collect NDA acceptance
+            for (let i = 1; i <= 9; i++) {
+                collectData(i);
+            }
             if (!formData.nda_accept) {
                 alert('You must accept the NDA to submit the form.');
                 return;
             }
-
-            // Sign up the user with Supabase Auth
             const { data, error } = await supabase.auth.signUp({
                 email: formData.email,
                 password: formData.password
             });
-
             if (error) {
                 alert('Error signing up: ' + error.message);
                 return;
             }
-
             const user = data.user;
-
-            // Insert form data into the cleaners table
             const { error: insertError } = await supabase
                 .from('cleaners')
                 .insert({
@@ -804,13 +795,11 @@
                     work_with_others: formData.work_with_others,
                     nda_accept: formData.nda_accept
                 });
-
             if (insertError) {
                 alert('Error saving data: ' + insertError.message);
             } else {
                 alert('Sign up successful! Please check your email to confirm your account.');
-                // Optional: Redirect to login page
-                // window.location.href = 'login.html';
+                window.location.href = 'login.html';
             }
         }
 
@@ -825,9 +814,8 @@
                     }
                 });
             });
+            showSection(0);
         });
-
-        showSection(0);
     </script>
 </body>
 </html>
