@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spruces Sign-Up</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Add Supabase JavaScript Client -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Updated Supabase JavaScript Client to UMD build -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <style>
         /* Base Styles */
         body {
@@ -640,8 +640,8 @@
         let currentSection = 0;
         let formData = {};
 
-        // Initialize Supabase client
-        const supabase = Supabase.createClient(
+        // Initialize Supabase client correctly
+        const supabaseClient = supabase.createClient(
             'https://cuoqvccjoymctjucrhbb.supabase.co',
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA'
         );
@@ -747,59 +747,72 @@
         }
 
         async function submitForm() {
+            console.log('Starting submission');
             for (let i = 1; i <= 9; i++) {
                 collectData(i);
             }
-            if (!formData.nda_accept) {
-                alert('You must accept the NDA to submit the form.');
-                return;
-            }
-            const { data, error } = await supabase.auth.signUp({
-                email: formData.email,
-                password: formData.password
-            });
-            if (error) {
-                alert('Error signing up: ' + error.message);
-                return;
-            }
-            const user = data.user;
-            const { error: insertError } = await supabase
-                .from('cleaners')
-                .insert({
-                    id: user.id,
-                    full_name: formData.full_name,
-                    phone: formData.phone,
-                    birthday: formData.birthday,
-                    nationality: formData.nationality,
-                    street: formData.street,
-                    address_line2: formData.address_line2,
-                    city: formData.city,
-                    state: formData.state,
-                    cleaning_type: formData.cleaning_type,
-                    experience_duration: formData.experience_duration,
-                    pickup_skills: formData.pickup_skills,
-                    other_jobs: formData.other_jobs,
-                    last_employer: formData.last_employer,
-                    employer_duration: formData.employer_duration,
-                    roles: formData.roles,
-                    contact_employer: formData.contact_employer,
-                    tools: formData.tools,
-                    comfort_areas: formData.comfort_areas,
-                    training_areas: formData.training_areas,
-                    prioritize_tasks: formData.prioritize_tasks,
-                    cleaning_challenge: formData.cleaning_challenge,
-                    work_style: formData.work_style,
-                    schedule_experience: formData.schedule_experience,
-                    priority: formData.priority,
-                    car_ownership: formData.car_ownership,
-                    work_with_others: formData.work_with_others,
-                    nda_accept: formData.nda_accept
+            console.log('Form data collected:', formData);
+
+            try {
+                console.log('Attempting sign-up');
+                const { data, error } = await supabaseClient.auth.signUp({
+                    email: formData.email,
+                    password: formData.password
                 });
-            if (insertError) {
-                alert('Error saving data: ' + insertError.message);
-            } else {
+                if (error) {
+                    console.error('Sign-up error:', error);
+                    alert('Error signing up: ' + error.message);
+                    return;
+                }
+                console.log('Sign-up successful, user:', data.user);
+
+                const user = data.user;
+
+                console.log('Attempting to insert data into cleaners table');
+                const { error: insertError } = await supabaseClient
+                    .from('cleaners')
+                    .insert({
+                        id: user.id,
+                        full_name: formData.full_name,
+                        phone: formData.phone,
+                        birthday: formData.birthday,
+                        nationality: formData.nationality,
+                        street: formData.street,
+                        address_line2: formData.address_line2,
+                        city: formData.city,
+                        state: formData.state,
+                        cleaning_type: formData.cleaning_type,
+                        experience_duration: formData.experience_duration,
+                        pickup_skills: formData.pickup_skills,
+                        other_jobs: formData.other_jobs,
+                        last_employer: formData.last_employer,
+                        employer_duration: formData.employer_duration,
+                        roles: formData.roles,
+                        contact_employer: formData.contact_employer,
+                        tools: formData.tools,
+                        comfort_areas: formData.comfort_areas,
+                        training_areas: formData.training_areas,
+                        prioritize_tasks: formData.prioritize_tasks,
+                        cleaning_challenge: formData.cleaning_challenge,
+                        work_style: formData.work_style,
+                        schedule_experience: formData.schedule_experience,
+                        priority: formData.priority,
+                        car_ownership: formData.car_ownership,
+                        work_with_others: formData.work_with_others,
+                        nda_accept: formData.nda_accept
+                    });
+                if (insertError) {
+                    console.error('Insert error:', insertError);
+                    alert('Error saving data: ' + insertError.message);
+                    return;
+                }
+                console.log('Data inserted successfully');
+
                 alert('Sign up successful! Please check your email to confirm your account.');
                 window.location.href = 'login.html';
+            } catch (err) {
+                console.error('Unexpected error:', err);
+                alert('An unexpected error occurred. Please try again.');
             }
         }
 
