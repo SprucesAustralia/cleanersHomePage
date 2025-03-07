@@ -134,14 +134,16 @@
     </div>
 
     <script>
-        // Initialize Supabase client (replace with your credentials)
-        const supabase = Supabase.createClient('https://cuoqvccjoymctjucrhbb.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA');
+        // Initialize Supabase client (corrected to use lowercase 'supabase')
+        const supabase = supabase.createClient('https://cuoqvccjoymctjucrhbb.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA');
 
         // Handle login form submission
         document.getElementById('login-form').addEventListener('submit', async function(e) {
             e.preventDefault();
+            console.log('Form submitted');
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            console.log('Attempting login with:', email);
 
             const { data, error } = await supabase.auth.signInWithPassword({
                 email,
@@ -149,10 +151,12 @@
             });
 
             if (error) {
+                console.error('Login error:', error);
                 alert('Login failed: ' + error.message);
             } else {
-                // Redirect to Available Jobs page
-                window.location.href = 'https://sprucesaustralia.github.io/cleanersHomePage/available-jobs.html';
+                console.log('Login successful, redirecting...');
+                // Redirect to the homepage
+                window.location.href = 'https://sprucesaustralia.github.io/cleanersHomePage/';
             }
         });
 
