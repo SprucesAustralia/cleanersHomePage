@@ -5,240 +5,345 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spruces Sign-Up</title>
     <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Base Styles */
         body {
-            font-family: 'Helvetica', 'Arial', sans-serif;
+            font-family: 'Helvetica', 'Arial', sans-serif; /* Replace with Articulat CF if available */
             background-color: #FFFFFF;
             color: #183630; /* Forest */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
-            max-width: 500px;
-            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
             text-align: center;
         }
 
+        h1, h2 {
+            color: #183630;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
         /* Progress Bar */
-        .progress {
+        #progress-bar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 4px;
-            background-color: #F3F1C0; /* Lemon */
+            background-color: #E0E0E0;
         }
 
-        .progress-fill {
+        #progress {
             height: 100%;
             background-color: #C7DE6B; /* Lime */
             width: 0;
             transition: width 0.3s ease;
         }
 
-        /* Form Steps */
-        .form-step {
+        /* Sections */
+        .section {
             display: none;
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.3s ease;
         }
 
-        .form-step.active {
+        .section.active {
             display: block;
             opacity: 1;
         }
 
-        h2 {
-            font-size: 1.8em;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1em;
-            margin-bottom: 20px;
-            color: #666;
-        }
-
-        .form-group {
-            margin-bottom: 30px;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #E0E0E0;
-            border-radius: 8px;
-            font-size: 1.1em;
-            background-color: #FFFFFF;
-            color: #183630;
-            transition: border-color 0.3s;
-        }
-
-        input:focus, select:focus {
-            border-color: #C7DE6B; /* Lime */
-            outline: none;
-        }
-
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        /* Form Styles */
+        form {
             text-align: left;
-            margin-top: 10px;
+            margin-bottom: 20px;
         }
 
-        .radio-group label {
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #E0E0E0;
+            border-radius: 5px;
             font-size: 1em;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
         }
 
-        .radio-group input {
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="checkbox"], input[type="radio"] {
+            width: auto;
             margin-right: 10px;
         }
 
         /* Buttons */
-        .btn {
+        button {
             background-color: #C7DE6B; /* Lime */
             color: #FFFFFF;
-            padding: 12px 40px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 25px;
-            font-size: 1em;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            margin: 5px;
         }
 
-        .btn:hover {
+        button:hover {
             background-color: #A8C257; /* Darker Lime */
         }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: #999999;
-            padding: 12px 20px;
-            margin-right: 20px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-secondary:hover {
-            color: #666666;
+        .hidden {
+            display: none;
         }
 
         /* Responsive Design */
-        @media (max-width: 480px) {
-            h2 {
-                font-size: 1.5em;
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
             }
-
-            .btn {
-                padding: 10px 30px;
-            }
+            h1 { font-size: 1.5em; }
+            h2 { font-size: 1.2em; }
         }
     </style>
 </head>
 <body>
-    <div class="progress">
-        <div class="progress-fill" id="progress-fill"></div>
+    <div id="progress-bar">
+        <div id="progress"></div>
     </div>
     <div class="container">
-        <form id="signup-form">
-            <!-- Step 1: Welcome -->
-            <div class="form-step active" id="step-1">
-                <h2>Hey there! Ready to join Spruces?</h2>
-                <p>This will take about 15 minutes. Are you good to go?</p>
-                <div class="form-group">
-                    <div class="radio-group">
-                        <label><input type="radio" name="consent" value="yes" required> Yes, let’s do this!</label>
-                        <label><input type="radio" name="consent" value="no"> Not right now</label>
-                    </div>
-                </div>
-                <button type="button" class="btn" onclick="nextStep(1)">Next</button>
-            </div>
+        <!-- Welcome Section -->
+        <div id="welcome" class="section active">
+            <h1>Hey there! Ready to join Spruces?</h1>
+            <p>This will take about 15 minutes. Let’s get started!</p>
+            <button onclick="startApplication()">Start Application</button>
+        </div>
 
-            <!-- Step 2: Name -->
-            <div class="form-step" id="step-2">
-                <h2>What’s your name?</h2>
-                <div class="form-group">
-                    <input type="text" id="name" placeholder="e.g., Alex Smith" required>
-                </div>
-                <button type="button" class="btn-secondary" onclick="prevStep(2)">Back</button>
-                <button type="button" class="btn" onclick="nextStep(2)">Next</button>
-            </div>
+        <!-- Section 1: Personal Information -->
+        <div id="section1" class="section hidden">
+            <h2>Tell us about yourself</h2>
+            <form id="form1">
+                <label for="full-name">What’s your full name?</label>
+                <input type="text" id="full-name" required>
+                <label for="email">What’s your email address?</label>
+                <input type="email" id="email" required>
+                <label for="phone">What’s your phone number?</label>
+                <input type="tel" id="phone" required>
+            </form>
+            <button onclick="prevSection()">Back</button>
+            <button onclick="nextSection()">Next</button>
+        </div>
 
-            <!-- Step 3: Email -->
-            <div class="form-step" id="step-3">
-                <h2>And your email?</h2>
-                <div class="form-group">
-                    <input type="email" id="email" placeholder="e.g., alex@gmail.com" required>
-                </div>
-                <button type="button" class="btn-secondary" onclick="prevStep(3)">Back</button>
-                <button type="button" class="btn" onclick="nextStep(3)">Next</button>
-            </div>
+        <!-- Section 2: Address -->
+        <div id="section2" class="section hidden">
+            <h2>Where do you live?</h2>
+            <form id="form2">
+                <label for="street">Street Address</label>
+                <input type="text" id="street" required>
+                <label for="city">City</label>
+                <input type="text" id="city" required>
+                <label for="state">State</label>
+                <select id="state" required>
+                    <option value="">Select state</option>
+                    <option value="QLD">QLD</option>
+                    <option value="NSW">NSW</option>
+                    <option value="VIC">VIC</option>
+                    <option value="SA">SA</option>
+                    <option value="WA">WA</option>
+                    <option value="TAS">TAS</option>
+                    <option value="NT">NT</option>
+                    <option value="ACT">ACT</option>
+                </select>
+            </form>
+            <button onclick="prevSection()">Back</button>
+            <button onclick="nextSection()">Next</button>
+        </div>
 
-            <!-- Step 4: Completion -->
-            <div class="form-step" id="step-4">
-                <h2>You’re all set!</h2>
-                <p>We’ll review your info and get back to you soon. Thanks for joining Spruces!</p>
-                <button type="submit" class="btn">Submit</button>
-            </div>
-        </form>
+        <!-- Section 3: Cleaning Experience -->
+        <div id="section3" class="section hidden">
+            <h2>What’s your cleaning background?</h2>
+            <form id="form3">
+                <label>What type of cleaning have you done before?</label>
+                <div>
+                    <label><input type="checkbox" name="cleaning-type" value="residential"> Residential (Paid)</label>
+                    <label><input type="checkbox" name="cleaning-type" value="commercial"> Commercial (Paid)</label>
+                    <label><input type="checkbox" name="cleaning-type" value="home"> Just around my home</label>
+                </div>
+                <label for="experience-duration">How long have you been doing this?</label>
+                <select id="experience-duration" required>
+                    <option value="">Select duration</option>
+                    <option value="just-started">Just started!</option>
+                    <option value="couple-months">Couple of months</option>
+                    <option value="6-months">About 6 months</option>
+                    <option value="1-year">Around 1 year</option>
+                    <option value="2-years">Around 2 years</option>
+                    <option value="more-2-years">More than 2 years</option>
+                </select>
+                <label>How quickly can you pick up cleaning skills?</label>
+                <div>
+                    <label><input type="radio" name="pickup-skills" value="shadow" required> I just need to shadow someone</label>
+                    <label><input type="radio" name="pickup-skills" value="videos"> I’ve been watching training videos</label>
+                    <label><input type="radio" name="pickup-skills" value="training"> A couple weeks of training will do</label>
+                </div>
+            </form>
+            <button onclick="prevSection()">Back</button>
+            <button onclick="nextSection()">Next</button>
+        </div>
+
+        <!-- Section 4: References -->
+        <div id="section4" class="section hidden">
+            <h2>Who can vouch for you?</h2>
+            <form id="form4">
+                <label for="ref1-name">First Reference Name</label>
+                <input type="text" id="ref1-name" required>
+                <label for="ref1-phone">Their Phone Number</label>
+                <input type="tel" id="ref1-phone" required>
+                <label for="ref1-email">Their Email</label>
+                <input type="email" id="ref1-email" required>
+            </form>
+            <button onclick="prevSection()">Back</button>
+            <button onclick="nextSection()">Next</button>
+        </div>
+
+        <!-- Section 5: Cleaning Skills -->
+        <div id="section5" class="section hidden">
+            <h2>What cleaning skills do you bring?</h2>
+            <form id="form5">
+                <label>What tools have you used?</label>
+                <div>
+                    <label><input type="checkbox" name="tools" value="chemicals"> Cleaning chemicals</label>
+                    <label><input type="checkbox" name="tools" value="mop-bucket"> Mop and bucket</label>
+                    <label><input type="checkbox" name="tools" value="vacuum"> Vacuum</label>
+                </div>
+                <label for="prioritize-tasks">How do you prioritize tasks on a busy day?</label>
+                <textarea id="prioritize-tasks" required></textarea>
+                <label for="cleaning-challenge">Any cleaning challenges you’ve solved?</label>
+                <textarea id="cleaning-challenge" required></textarea>
+            </form>
+            <button onclick="prevSection()">Back</button>
+            <button onclick="nextSection()">Next</button>
+        </div>
+
+        <!-- Section 6: Work Style -->
+        <div id="section6" class="section hidden">
+            <h2>How do you like to work?</h2>
+            <form id="form6">
+                <label>How are you most comfortable working?</label>
+                <div>
+                    <label><input type="checkbox" name="work-style" value="paired"> Paired with someone</label>
+                    <label><input type="checkbox" name="work-style" value="alone"> Alone</label>
+                    <label><input type="checkbox" name="work-style" value="teams"> In teams</label>
+                </div>
+                <label>Experience with cleaning schedules?</label>
+                <div>
+                    <label><input type="radio" name="schedule-experience" value="yes" required> Yes</label>
+                    <label><input type="radio" name="schedule-experience" value="no"> No</label>
+                </div>
+                <label>What do you clean first if time’s short?</label>
+                <div>
+                    <label><input type="checkbox" name="priority" value="toilets"> Toilets</label>
+                    <label><input type="checkbox" name="priority" value="kitchen"> Kitchen</label>
+                    <label><input type="checkbox" name="priority" value="entrance"> Entrance</label>
+                </div>
+            </form>
+            <button onclick="prevSection()">Back</button>
+            <button onclick="nextSection()">Next</button>
+        </div>
+
+        <!-- Section 7: Circumstances -->
+        <div id="section7" class="section hidden">
+            <h2>A few more details</h2>
+            <form id="form7">
+                <label>Do you have a car?</label>
+                <div>
+                    <label><input type="radio" name="car-ownership" value="yes" required> Yes</label>
+                    <label><input type="radio" name="car-ownership" value="no"> No</label>
+                    <label><input type="radio" name="car-ownership" value="soon"> Soon</label>
+                </div>
+                <label>Okay working with others?</label>
+                <div>
+                    <label><input type="radio" name="work-with-others" value="yes" required> Yes</label>
+                    <label><input type="radio" name="work-with-others" value="no"> No</label>
+                </div>
+            </form>
+            <button onclick="prevSection()">Back</button>
+            <button onclick="nextSection()">Next</button>
+        </div>
+
+        <!-- Section 8: Verification and Payment -->
+        <div id="section8" class="section hidden">
+            <h2>Let’s wrap up with verification</h2>
+            <form id="form8">
+                <label for="license-front">Upload front of your driver’s license</label>
+                <input type="file" id="license-front" accept="image/*, .pdf" required>
+                <label for="abn-number">What’s your ABN number?</label>
+                <input type="text" id="abn-number" required>
+                <label for="bank-name">Bank Name</label>
+                <input type="text" id="bank-name" required>
+            </form>
+            <button onclick="prevSection()">Back</button>
+            <button onclick="nextSection()">Submit</button>
+        </div>
     </div>
+
     <script>
-        let currentStep = 1;
-        const totalSteps = 4;
+        const sections = ['welcome', 'section1', 'section2', 'section3', 'section4', 'section5', 'section6', 'section7', 'section8'];
+        let currentSection = 0;
 
         function updateProgress() {
-            const progressFill = document.getElementById('progress-fill');
-            const percentage = (currentStep / totalSteps) * 100;
-            progressFill.style.width = `${percentage}%`;
+            const progress = (currentSection / (sections.length - 1)) * 100;
+            document.getElementById('progress').style.width = `${progress}%`;
         }
 
-        function showStep(step) {
-            document.querySelectorAll('.form-step').forEach((el, index) => {
-                el.classList.toggle('active', index + 1 === step);
+        function showSection(index) {
+            document.querySelectorAll('.section').forEach((section, i) => {
+                section.classList.toggle('active', i === index);
+                section.classList.toggle('hidden', i !== index);
             });
             updateProgress();
         }
 
-        function nextStep(step) {
-            const form = document.getElementById('signup-form');
-            const currentInputs = document.querySelector(`#step-${step} [required]`);
-            if (currentInputs && !form.checkValidity()) {
+        function startApplication() {
+            showSection(1);
+            currentSection = 1;
+        }
+
+        function nextSection() {
+            const form = document.getElementById(`form${currentSection}`);
+            if (form && !form.checkValidity()) {
                 form.reportValidity();
                 return;
             }
-            if (step < totalSteps) {
-                currentStep = step + 1;
-                showStep(currentStep);
+            if (currentSection < sections.length - 1) {
+                showSection(currentSection + 1);
+                currentSection++;
             } else {
-                form.submit();
-                alert('Thanks for joining Spruces!');
+                alert('Thanks for applying to Spruces!');
+                // In production, submit form data to backend here
             }
         }
 
-        function prevStep(step) {
-            if (step > 1) {
-                currentStep = step - 1;
-                showStep(currentStep);
+        function prevSection() {
+            if (currentSection > 0) {
+                showSection(currentSection - 1);
+                currentSection--;
             }
         }
 
-        // Initial setup
-        showStep(currentStep);
+        // Initialize
+        showSection(0);
     </script>
 </body>
 </html>
