@@ -6,6 +6,7 @@
     <title>Spruces Login</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
+        /* Your existing CSS here */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -84,53 +85,63 @@
             <button type="submit">Log In</button>
         </form>
         <div class="signup-link">
-            Don’t have an account? <a href="#">Sign Up</a>
+            Don’t have an account? <a href="signup.html">Sign Up</a>
         </div>
     </div>
 
     <script>
-        const supabase = supabase.createClient(
-            'https://cuoqvccjoymctjucrhbb.supabase.co',
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA'
-        );
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Supabase client
+            const supabase = supabase.createClient(
+                'https://cuoqvccjoymctjucrhbb.supabase.co',
+                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA'
+            );
 
-        document.getElementById('login-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
+            // Handle login form submission
+            document.getElementById('login-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
 
-            try {
-                // Fetch email from cleaners table using username
-                const { data: cleaner, error: fetchError } = await supabase
-                    .from('cleaners')
-                    .select('email')
-                    .eq('username', username)
-                    .single();
+                try {
+                    console.log('Attempting to fetch email for username:', username);
+                    // Fetch email from cleaners table using username
+                    const { data: cleaner, error: fetchError } = await supabase
+                        .from('cleaners')
+                        .select('email')
+                        .eq('username', username)
+                        .single();
 
-                if (fetchError || !cleaner) {
-                    alert('Username not found or database error.');
-                    return;
+                    if (fetchError || !cleaner) {
+                        console.error('Fetch error:', fetchError);
+                        alert('Username not found or database error.');
+                        return;
+                    }
+
+                    const email = cleaner.email;
+                    console.log('Retrieved email:', email);
+
+                    // Log in with Supabase Auth
+                    console.log('Attempting login with email:', email);
+                    const { data, error } = await supabase.auth.signInWithPassword({
+                        email,
+                        password
+                    });
+
+                    if (error) {
+                        console.error('Login error:', error);
+                        alert('Login failed: ' + error.message);
+                        return;
+                    }
+
+                    console.log('Login successful, user:', data.user);
+                    window.location.href = 'available-jobs.html';
+                } catch (err) {
+                    console.error('Unexpected error:', err);
+                    alert('An unexpected error occurred. Please try again.');
                 }
-
-                const email = cleaner.email;
-
-                // Log in with Supabase Auth
-                const { data, error } = await supabase.auth.signInWithPassword({
-                    email,
-                    password
-                });
-
-                if (error) {
-                    alert('Login failed: ' + error.message);
-                    return;
-                }
-
-                // Redirect to available-jobs.html on success
-                window.location.href = 'available-jobs.html';
-            } catch (err) {
-                alert('An unexpected error occurred. Please try again.');
-            }
+            });
         });
     </script>
 </body>
