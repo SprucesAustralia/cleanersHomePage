@@ -119,8 +119,8 @@
         <h1>Welcome Back to Spruces</h1>
         <p>Log in to continue your journey with us.</p>
         <form id="login-form">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" required>
+            <label for="username">Username</label>
+            <input type="text" id="username" required>
             <label for="password">Password</label>
             <input type="password" id="password" required>
             <div class="forgot-password">
@@ -134,29 +134,51 @@
     </div>
 
     <script>
-        // Initialize Supabase client (corrected to use lowercase 'supabase')
+        // Initialize Supabase client
         const supabase = supabase.createClient('https://cuoqvccjoymctjucrhbb.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA');
 
         // Handle login form submission
         document.getElementById('login-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             console.log('Form submitted');
-            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            console.log('Attempting login with:', email);
+            console.log('Attempting login with username:', username);
 
-            const { data, error } = await supabase.auth.signInWithPassword({
-                email,
-                password
-            });
+            try {
+                // Retrieve the email associated with the username
+                const { data: cleaner, error: fetchError } = await supabase
+                    .from('cleaners')
+                    .select('email')
+                    .eq('username', username)
+                    .single();
 
-            if (error) {
-                console.error('Login error:', error);
-                alert('Login failed: ' + error.message);
-            } else {
-                console.log('Login successful, redirecting...');
-                // Redirect to the homepage
-                window.location.href = 'https://sprucesaustralia.github.io/cleanersHomePage/available-jobs.html';
+                if (fetchError || !cleaner) {
+                    alert('Username not found');
+                    return;
+                }
+
+                const email = cleaner.email;
+                console.log('Retrieved email:', email);
+
+                // Log in with email and password
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email,
+                    password
+                });
+
+                if (error) {
+                    console.error('Login error:', error);
+                    alert('Login failed: ' + error.message);
+                    return;
+                }
+
+                console.log('Login successful, user:', data.user);
+                console.log('Redirecting to available-jobs.html');
+                window.location.href = 'available-jobs.html';
+            } catch (err) {
+                console.error('Unexpected error during login:', err);
+                alert('An unexpected error occurred. Please try again.');
             }
         });
 
@@ -164,11 +186,23 @@
         /*
         document.getElementById('forgot-password').addEventListener('click', async function(e) {
             e.preventDefault();
-            const email = prompt('Enter your email address:');
-            if (email) {
-                const { error } = await supabase.auth.resetPasswordForEmail(email);
-                if (error) {
-                    alert('Error sending reset email: ' + error.message);
+            const username = prompt('Enter your username:');
+            if (username) {
+                const { data: cleaner, error } = await supabase
+                    .from('cleaners')
+                    .select('email')
+                    .eq('username', username)
+                    .single();
+
+                if (error || !cleaner) {
+                    alert('Username not found');
+                    return;
+                }
+
+                const email = cleaner.email;
+                const { error: resetError } = await supabase.auth.resetPasswordForEmail(email);
+                if (resetError) {
+                    alert('Error sending reset email: ' + resetError.message);
                 } else {
                     alert('Reset email sent. Check your inbox.');
                 }
