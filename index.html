@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spruces Sign-Up</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Updated Supabase JavaScript Client to UMD build -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <style>
-        /* Base Styles */
         body {
             font-family: 'Helvetica Neue', 'Arial', sans-serif;
             background-color: #F2F2F7;
@@ -39,7 +37,6 @@
             line-height: 1.5;
         }
 
-        /* Progress Bar */
         #progress-bar {
             position: fixed;
             top: 0;
@@ -58,7 +55,6 @@
             border-radius: 0 5px 5px 0;
         }
 
-        /* Sections */
         .section {
             display: none;
             opacity: 0;
@@ -76,7 +72,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Form Styles */
         form {
             text-align: left;
             margin-bottom: 25px;
@@ -110,7 +105,6 @@
             resize: vertical;
         }
 
-        /* Custom Checkboxes and Radio Buttons */
         input[type="checkbox"], input[type="radio"] {
             display: none;
         }
@@ -169,7 +163,6 @@
             border-color: #28A745;
         }
 
-        /* Fieldsets for Grouping */
         fieldset {
             border: none;
             margin-bottom: 25px;
@@ -181,7 +174,6 @@
             color: #1D1D1F;
         }
 
-        /* Buttons */
         button {
             background: linear-gradient(135deg, #28A745, #34D058);
             color: #FFFFFF;
@@ -199,7 +191,6 @@
             box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
         }
 
-        /* Icon Styles for Questions */
         .icon-label {
             display: flex;
             align-items: center;
@@ -223,7 +214,6 @@
             color: #34D058;
         }
 
-        /* Responsive Design */
         @media (max-width: 600px) {
             .container {
                 padding: 15px;
@@ -572,10 +562,12 @@
             <button onclick="nextSection()">Next</button>
         </div>
 
-        <!-- Section 8: Account Creation -->
+        <!-- Section 8: Account Creation (Updated) -->
         <div id="section8" class="section hidden">
             <h2>Create Your Account</h2>
             <form id="form8">
+                <label for="username">Choose a username</label>
+                <input type="text" id="username" required>
                 <label for="password">Choose a password</label>
                 <input type="password" id="password" required>
                 <label for="confirm-password">Confirm password</label>
@@ -640,7 +632,7 @@
         let currentSection = 0;
         let formData = {};
 
-        // Initialize Supabase client correctly
+        // Initialize Supabase client
         const supabaseClient = supabase.createClient(
             'https://cuoqvccjoymctjucrhbb.supabase.co',
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA'
@@ -712,6 +704,7 @@
                 formData.car_ownership = document.querySelector('input[name="car-ownership"]:checked')?.value;
                 formData.work_with_others = document.querySelector('input[name="work-with-others"]:checked')?.value;
             } else if (sectionIndex === 8) {
+                formData.username = document.getElementById('username').value;
                 formData.password = document.getElementById('password').value;
             } else if (sectionIndex === 9) {
                 formData.nda_accept = document.querySelector('input[name="nda"]:checked')?.value === 'accept';
@@ -754,6 +747,24 @@
             console.log('Form data collected:', formData);
 
             try {
+                // Check if username is already taken
+                const { data: existingUser, error: checkError } = await supabaseClient
+                    .from('cleaners')
+                    .select('username')
+                    .eq('username', formData.username)
+                    .single();
+
+                if (existingUser) {
+                    alert('Username already taken. Please choose another one.');
+                    return;
+                }
+
+                if (checkError && checkError.code !== 'PGRST116') {
+                    console.error('Error checking username:', checkError);
+                    alert('Error checking username: ' + checkError.message);
+                    return;
+                }
+
                 console.log('Attempting sign-up');
                 const { data, error } = await supabaseClient.auth.signUp({
                     email: formData.email,
@@ -773,6 +784,7 @@
                     .from('cleaners')
                     .insert({
                         id: user.id,
+                        username: formData.username,
                         full_name: formData.full_name,
                         phone: formData.phone,
                         birthday: formData.birthday,
@@ -808,7 +820,7 @@
                 }
                 console.log('Data inserted successfully');
 
-                alert('Sign up successful! Please check your email to confirm your account.');
+                alert('Sign up successful! You can now log in with your username and password.');
                 window.location.href = 'login.html';
             } catch (err) {
                 console.error('Unexpected error:', err);
