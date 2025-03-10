@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spruces Login</title>
+    <!-- Load the Supabase JavaScript client library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        /* Your existing CSS here */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -90,23 +90,23 @@
     </div>
 
     <script>
+        // Wait for the DOM to fully load before running any code
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Supabase client
-            const supabase = supabase.createClient(
+            // Initialize Supabase client with your URL and anon key
+            const supabase = window.supabase.createClient(
                 'https://cuoqvccjoymctjucrhbb.supabase.co',
                 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA'
             );
 
-            // Handle login form submission
+            // Handle form submission
             document.getElementById('login-form').addEventListener('submit', async function(e) {
-                e.preventDefault();
+                e.preventDefault(); // Prevent default form submission
 
                 const username = document.getElementById('username').value;
                 const password = document.getElementById('password').value;
 
                 try {
-                    console.log('Attempting to fetch email for username:', username);
-                    // Fetch email from cleaners table using username
+                    // Step 1: Fetch the email from the cleaners table using the username
                     const { data: cleaner, error: fetchError } = await supabase
                         .from('cleaners')
                         .select('email')
@@ -114,32 +114,28 @@
                         .single();
 
                     if (fetchError || !cleaner) {
-                        console.error('Fetch error:', fetchError);
                         alert('Username not found or database error.');
                         return;
                     }
 
                     const email = cleaner.email;
-                    console.log('Retrieved email:', email);
 
-                    // Log in with Supabase Auth
-                    console.log('Attempting login with email:', email);
+                    // Step 2: Log in with Supabase Auth using the retrieved email
                     const { data, error } = await supabase.auth.signInWithPassword({
                         email,
                         password
                     });
 
                     if (error) {
-                        console.error('Login error:', error);
                         alert('Login failed: ' + error.message);
                         return;
                     }
 
-                    console.log('Login successful, user:', data.user);
+                    // Step 3: Redirect to the next page on successful login
                     window.location.href = 'available-jobs.html';
                 } catch (err) {
-                    console.error('Unexpected error:', err);
                     alert('An unexpected error occurred. Please try again.');
+                    console.error('Error:', err);
                 }
             });
         });
