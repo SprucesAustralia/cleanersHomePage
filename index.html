@@ -562,7 +562,7 @@
             <button onclick="nextSection()">Next</button>
         </div>
 
-        <!-- Section 8: Account Creation (Updated) -->
+        <!-- Section 8: Account Creation -->
         <div id="section8" class="section hidden">
             <h2>Create Your Account</h2>
             <form id="form8">
@@ -784,6 +784,7 @@
                     .from('cleaners')
                     .insert({
                         id: user.id,
+                        email: formData.email,  // Added this line to include email in the cleaners table
                         username: formData.username,
                         full_name: formData.full_name,
                         phone: formData.phone,
