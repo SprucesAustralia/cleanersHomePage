@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Jobs - Spruces Commercial Cleaning</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" defer></script>
     <style>
         body {
             background-color: #004d40; /* Dark teal background */
@@ -129,9 +128,6 @@
     </style>
 </head>
 <body>
-    <div id="loading" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #004d40; display: flex; justify-content: center; align-items: center; z-index: 9999; color: white; font-size: 1.5em;">
-        Loading...
-    </div>
     <!-- Header -->
     <div class="header">
         <h1>Available Jobs</h1>
@@ -225,17 +221,5 @@
             </tbody>
         </table>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const supabase = supabase.createClient('https://cuoqvccjoymctjucrhbb.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA');
-            const { data: { session }, error } = await supabase.auth.getSession();
-            if (error || !session) {
-                window.location.href = 'index.html';
-            } else {
-                document.getElementById('loading').style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>
