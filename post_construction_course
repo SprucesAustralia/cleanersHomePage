@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-Construction Cleaning Course</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .hidden {
+            display: none;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        li i {
+            margin-right: 10px;
+            color: #007bff;
+        }
+        fieldset {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        legend {
+            font-weight: bold;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #progress-bar {
+            width: 100%;
+            background-color: #f0f0f0;
+            height: 20px;
+            margin-bottom: 20px;
+        }
+        #progress {
+            width: 0%;
+            height: 100%;
+            background-color: #007bff;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div id="progress-bar">
+        <div id="progress"></div>
+    </div>
+
+    <!-- Placeholder for sections 0 to 28 (first part of the course) -->
+    <!-- Assuming section0 is personal info, then 1-28 alternate lessons and questions -->
+    <div id="section0" class="section active">
+        <h2>Welcome</h2>
+        <p>Please enter your details to start the course.</p>
+        <form id="form0">
+            <label>Name: <input type="text" name="name" required></label>
+            <label>Phone: <input type="tel" name="phone" required></label>
+            <label>Email: <input type="email" name="email" required></label>
+        </form>
+        <button onclick="nextSection()">Next</button>
+    </div>
+    <!-- Sections 1 to 28 would follow, e.g., section1 (lesson1), section2 (question1), ..., section28 (question14) -->
+    <!-- For brevity, only showing the last one and new sections -->
+    <div id="section28" class="section hidden">
+        <h2>Question 14</h2>
+        <form id="form28">
+            <fieldset>
+                <legend>Sample question from first part</legend>
+                <input type="radio" id="q14a" name="q14" value="a" required>
+                <label for="q14a">a) Option A</label>
+                <input type="radio" id="q14b" name="q14" value="b">
+                <label for="q14b">b) Option B</label>
+                <input type="radio" id="q14c" name="q14" value="c">
+                <label for="q14c">c) Option C</label>
+                <input type="radio" id="q14d" name="q14" value="d">
+                <label for="q14d">d) Option D</label>
+            </fieldset>
+        </form>
+        <button onclick="prevSection()">Back</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 29: Lesson - General Cleaning Techniques -->
+    <div id="section29" class="section hidden">
+        <h2>Lesson: General Cleaning Techniques</h2>
+        <p>Let’s dive into the second part of the Post-Construction Cleaning Course! Below, I’ve structured the content into clear lessons and questions, mirroring the engaging and digestible format of the first part. Each section uses bullet points, icons, and well-spaced text for readability. Let’s get started.</p>
+        <p>Here’s how to clean efficiently after construction:</p>
+        <ul>
+            <li><i class="fas fa-broom"></i> Start with "dry before wet": Begin by removing loose dirt and debris using dry methods like sweeping, vacuuming, or dusting. Only then move to wet cleaning (e.g., mopping or wiping) to avoid turning dust into muddy streaks.</li>
+            <li><i class="fas fa-arrow-down"></i> Work from top to bottom: Clean high areas first—ceilings, light fixtures, and shelves—then progress downward to walls, furniture, and floors. This prevents falling dust from dirtying already-cleaned areas.</li>
+            <li><i class="fas fa-map"></i> Clean room by room systematically: Tackle one room at a time, starting from the farthest corner and moving toward the exit. This keeps you organized and avoids tracking dirt into finished spaces.</li>
+            <li><i class="fas fa-th"></i> Break it down into sections: Divide large surfaces (like floors or walls) into manageable chunks. Focus on one section at a time for thorough cleaning without feeling overwhelmed.</li>
+        </ul>
+        <button onclick="prevSection()">Back</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 30: Lesson - Surface-Specific Techniques -->
+    <div id="section30" class="section hidden">
+        <h2>Lesson: Surface-Specific Techniques</h2>
+        <p>Different surfaces need tailored approaches:</p>
+        <ul>
+            <li><i class="fas fa-toolbox"></i> Match your method to the material:
+                <ul>
+                    <li>Hard floors (tile, wood, laminate): Sweep or vacuum, then mop with a cleaner suited to the surface (e.g., pH-neutral for wood).</li>
+                    <li>Carpets: Vacuum deeply with a powerful machine, then steam clean for stains.</li>
+                    <li>Glass/windows: Dust frames first, then use glass cleaner with a lint-free cloth.</li>
+                    <li>Metal fixtures: Wipe with a damp cloth and polish if needed.</li>
+                    <li>Tile grout: Scrub with a grout brush and a mild cleaner or baking soda paste.</li>
+                </ul>
+            </li>
+            <li><i class="fas fa-spray-can"></i> Choose the right cleaning agent: Use appropriate cleaners to avoid damage:
+                <ul>
+                    <li>Glass cleaner for windows/mirrors.</li>
+                    <li>Wood polish for wooden surfaces (test first).</li>
+                    <li>Degreaser for greasy areas like kitchens.</li>
+                    <li>Disinfectant for bathrooms.</li>
+                    <li>All-purpose cleaner for general surfaces.</li>
+                </ul>
+            </li>
+            <li><i class="fas fa-tint"></i> Don’t over-wet surfaces: Excess water can harm wood or drywall. Use a damp (not dripping) cloth or mop and dry immediately if necessary.</li>
+        </ul>
+        <button onclick="prevSection()">Back</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 31: Questions - Stain and Residue Removal Techniques -->
+    <div id="section31" class="section hidden">
+        <h2>Questions: Stain and Residue Removal Techniques</h2>
+        <p>Test your knowledge with these questions:</p>
+        <form id="form31">
+            <fieldset>
+                <legend>Question 1: How should you remove dried paint splatters from a surface?</legend>
+                <input type="radio" id="q15a" name="q15" value="a" required>
+                <label for="q15a">a) Wipe with a wet cloth</label>
+                <input type="radio" id="q15b" name="q15" value="b">
+                <label for="q15b">b) Scrape gently with a plastic tool or use rubbing alcohol</label>
+                <input type="radio" id="q15c" name="q15" value="c">
+                <label for="q15c">c) Use a metal scraper</label>
+                <input type="radio" id="q15d" name="q15" value="d">
+                <label for="q15d">d) Ignore them</label>
+            </fieldset>
+            <fieldset>
+                <legend>Question 2: What is the safest way to remove adhesive residue from a delicate surface?</legend>
+                <input type="radio" id="q16a" name="q16" value="a" required>
+                <label for="q16a">a) Scrape with a metal blade</label>
+                <input type="radio" id="q16b" name="q16" value="b">
+                <label for="q16b">b) Use a plastic scraper or adhesive remover</label>
+                <input type="radio" id="q16c" name="q16" value="c">
+                <label for="q16c">c) Wipe with a dry cloth</label>
+                <input type="radio" id="q16d" name="q16" value="d">
+                <label for="q16d">d) Apply bleach</label>
+            </fieldset>
+            <fieldset>
+                <legend>Question 3: Which method is recommended for brightening grout lines in tile floors?</legend>
+                <input type="radio" id="q17a" name="q17" value="a" required>
+                <label for="q17a">a) Mop with water</label>
+                <input type="radio" id="q17b" name="q17" value="b">
+                <label for="q17b">b) Apply a baking soda paste and scrub with a small brush</label>
+                <input type="radio" id="q17c" name="q17" value="c">
+                <label for="q17c">c) Vacuum the grout</label>
+                <input type="radio" id="q17d" name="q17" value="d">
+                <label for="q17d">d) Ignore the grout lines</label>
+            </fieldset>
+        </form>
+        <button onclick="prevSection()">Back</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 32: Lesson - Dust and Debris Removal Techniques -->
+    <div id="section32" class="section hidden">
+        <h2>Lesson: Dust and Debris Removal Techniques</h2>
+        <p>Master dust and debris removal with these tips:</p>
+        <ul>
+            <li><i class="fas fa-star"></i> Opt for microfiber cloths: Microfiber traps dust without pushing it around. Use dry for dusting, damp for wiping, and rinse or swap them often.</li>
+            <li><i class="fas fa-vacuum"></i> Vacuum smartly with attachments: Use a crevice tool for corners and baseboards, and a brush attachment for delicate areas like vents. A HEPA-filter vacuum excels at catching fine dust.</li>
+            <li><i class="fas fa-arrow-up"></i> Dust high areas with an extendable tool: Use an extendable duster or vacuum wand for ceilings and walls, working in overlapping strokes.</li>
+            <li><i class="fas fa-trash"></i> Clear debris in stages: Pick up large items (e.g., wood scraps) first, sweep or vacuum smaller bits (like nails), then wipe surfaces for fine dust.</li>
+        </ul>
+        <button onclick="prevSection()">Back</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 33: Questions - Dust and Debris Removal Techniques -->
+    <div id="section33" class="section hidden">
+        <h2>Questions: Dust and Debris Removal Techniques</h2>
+        <p>Let’s check your understanding:</p>
+        <form id="form33">
+            <fieldset>
+                <legend>Question 1: What is the main advantage of using microfiber cloths for dusting?</legend>
+                <input type="radio" id="q18a" name="q18" value="a" required>
+                <label for="q18a">a) They are cheaper than other cloths</label>
+                <input type="radio" id="q18b" name="q18" value="b">
+                <label for="q18b">b) They trap dust without pushing it around</label>
+                <input type="radio" id="q18c" name="q18" value="c">
+                <label for="q18c">c) They can be used wet or dry</label>
+                <input type="radio" id="q18d" name="q18" value="d">
+                <label for="q18d">d) They are more durable than cotton cloths</label>
+            </fieldset>
+            <fieldset>
+                <legend>Question 2: Which vacuum attachment is best for cleaning delicate areas like vents?</legend>
+                <input type="radio" id="q19a" name="q19" value="a" required>
+                <label for="q19a">a) Crevice tool</label>
+                <input type="radio" id="q19b" name="q19" value="b">
+                <label for="q19b">b) Brush attachment</label>
+                <input type="radio" id="q19c" name="q19" value="c">
+                <label for="q19c">c) Wide nozzle</label>
+                <input type="radio" id="q19d" name="q19" value="d">
+                <label for="q19d">d) Turbo brush</label>
+            </fieldset>
+            <fieldset>
+                <legend>Question 3: What is the correct order for removing debris from a construction site?</legend>
+                <input type="radio" id="q20a" name="q20" value="a" required>
+                <label for="q20a">a) Vacuum first, then pick up large items</label>
+                <input type="radio" id="q20b" name="q20" value="b">
+                <label for="q20b">b) Pick up large items, sweep or vacuum smaller bits, then wipe surfaces</label>
+                <input type="radio" id="q20c" name="q20" value="c">
+                <label for="q20c">c) Wipe surfaces, then vacuum</label>
+                <input type="radio" id="q20d" name="q20" value="d">
+                <label for="q20d">d) Sweep, then pick up large items</label>
+            </fieldset>
+        </form>
+        <button onclick="prevSection()">Back</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 34: Lesson - Efficiency and Workflow Techniques -->
+    <div id="section34" class="section hidden">
+        <h2>Lesson: Efficiency and Workflow Techniques</h2>
+        <p>Work smarter with these strategies:</p>
+        <ul>
+            <li><i class="fas fa-fill-drip"></i> Try the two-bucket mopping method: Use one bucket for clean water and solution, another for dirty water. This keeps your mop effective and floors cleaner.</li>
+            <li><i class="fas fa-arrows-alt-h"></i> Overlap your strokes: When vacuuming, mopping, or wiping, overlap each pass slightly to avoid missing spots.</li>
+            <li><i class="fas fa-clock"></i> Clean in a consistent pattern: Move clockwise or counterclockwise around each room to stay systematic and thorough.</li>
+            <li><i class="fas fa-tasks"></i> Multitask during drying: While a floor dries, wipe counters or dust shelves to maximize your time.</li>
+        </ul>
+        <button onclick="prevSection()">Back</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 35: Lesson - Safety and Quality Control Techniques -->
+    <div id="section35" class="section hidden">
+        <h2>Lesson: Safety and Quality Control Techniques</h2>
+        <p>Ensure safety and a high-quality finish:</p>
+        <ul>
+            <li><i class="fas fa-wind"></i> Keep the space ventilated: Open windows and doors, especially when using chemicals or stirring up dust, to improve air quality.</li>
+            <li><i class="fas fa-lightbulb"></i> Inspect with a flashlight: Shine a light at an angle across surfaces to spot hidden dust or smudges for a flawless finish.</li>
+            <li><i class="fas fa-hand-paper"></i> Do a touch test: Run your hand over surfaces—if you feel grit or see residue, keep cleaning.</li>
+            <li><i class="fas fa-camera"></i> Take before-and-after photos: Photos help you track progress and spot areas needing more work during a final check.</li>
+        </ul>
+        <button onclick="prevSection()">Back</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 36: Lesson - Bonus Pro Tips -->
+    <div id="section36" class="section hidden">
+        <h2>Lesson: Bonus Pro Tips</h2>
+        <p>Elevate your skills with these expert tips:</p>
+        <ul>
+            <li><i class="fas fa-window-restore"></i> Squeegee glass surfaces: After cleaning windows or mirrors, use a squeegee for a streak-free shine. Wipe the blade between passes.</li>
+            <li><i class="fas fa-magnet"></i> Use a magnetic sweeper: Quickly collect nails, screws, or metal debris with a magnetic tool to save time and enhance safety.</li>
+            <li><i class="fas fa-toothbrush"></i> Detail with a small brush: A toothbrush or scrub brush cleans tight spots like window tracks or grout with precision.</li>
+            <li><i class="fas fa-wind"></i> Let surfaces air dry: For streak-free floors, glass, or mirrors, allow air drying when possible, touching up with a dry microfiber cloth if needed.</li>
+        </ul>
+        <button onclick="prevSection()">Back</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 37: Final Message -->
+    <div id="section37" class="section hidden">
+        <h2>Thank You for Completing the Course!</h2>
+        <p>Congratulations on finishing the Post-Construction Cleaning Course! You’ve gained valuable techniques to tackle any cleaning job with confidence. We hope you found this journey helpful and enjoyable.</p>
+        <button onclick="prevSection()">Back</button>
+        <button onclick="submitForm()">Submit</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Initialize Supabase client (replace with your credentials)
+        const supabase = Supabase.createClient('YOUR_SUPABASE_URL', 'YOUR_SUPABASE_KEY');
+
+        const sections = Array.from({length: 38}, (_, i) => `section${i}`);
+        let currentSection = 0;
+        const formData = {
+            name: '',
+            phone: '',
+            email: '',
+            answers: {}
+        };
+
+        function showSection(sectionNum) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+                section.classList.add('hidden');
+            });
+            document.getElementById(sections[sectionNum]).classList.remove('hidden');
+            document.getElementById(sections[sectionNum]).classList.add('active');
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progress = (currentSection / 37) * 100;
+            document.getElementById('progress').style.width = `${progress}%`;
+        }
+
+        function nextSection() {
+            const isFormSection = document.getElementById(sections[currentSection]).querySelector('form');
+            if (isFormSection) {
+                const form = document.getElementById(`form${currentSection}`);
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+                if (currentSection === 0) {
+                    formData.name = form.querySelector('input[name="name"]').value;
+                    formData.phone = form.querySelector('input[name="phone"]').value;
+                    formData.email = form.querySelector('input[name="email"]').value;
+                } else if (currentSection >= 2 && currentSection <= 28 && currentSection % 2 === 0) {
+                    const questionNum = currentSection / 2;
+                    const selected = document.querySelector(`input[name="q${questionNum}"]:checked`);
+                    if (selected) {
+                        formData.answers[`q${questionNum}`] = selected.value;
+                    }
+                } else if (currentSection === 31) {
+                    for (let i = 15; i <= 17; i++) {
+                        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                        if (selected) {
+                            formData.answers[`q${i}`] = selected.value;
+                        }
+                    }
+                } else if (currentSection === 33) {
+                    for (let i = 18; i <= 20; i++) {
+                        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                        if (selected) {
+                            formData.answers[`q${i}`] = selected.value;
+                        }
+                    }
+                }
+            }
+            if (currentSection < sections.length - 1) {
+                currentSection++;
+                showSection(currentSection);
+            }
+        }
+
+        function prevSection() {
+            if (currentSection > 0) {
+                currentSection--;
+                showSection(currentSection);
+            }
+        }
+
+        async function submitForm() {
+            for (let i = 1; i <= 20; i++) {
+                if (!formData.answers[`q${i}`]) {
+                    alert(`Please answer question ${i} before submitting.`);
+                    return;
+                }
+            }
+            const dataToInsert = {
+                name: formData.name,
+                phone: formData.phone,
+                email: formData.email,
+                ...Object.fromEntries(
+                    Array.from({length: 20}, (_, i) => [`answer${i+1}`, formData.answers[`q${i+1}`]])
+                )
+            };
+            const { data, error } = await supabase
+                .from('post_construction_course')
+                .insert([dataToInsert]);
+            if (error) {
+                console.error('Error submitting form:', error);
+                alert('There was an error submitting your answers. Please try again.');
+            } else {
+                alert('Thank you! Your answers have been submitted successfully.');
+            }
+        }
+
+        // Initialize the first section
+        showSection(0);
+    </script>
+</body>
+</html>
