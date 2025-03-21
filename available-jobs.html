@@ -4,202 +4,268 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Jobs - Spruces Commercial Cleaning</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        /* Base Styles */
         body {
-            background-color: #004d40; /* Dark teal background */
-            color: white;
-            font-family: 'Open Sans', sans-serif;
+            background-color: #FFFFFF;
+            color: #212121;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 20px;
             line-height: 1.6;
         }
 
-        /* Header Styling */
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: rgba(0, 77, 64, 0.9);
-            border-radius: 10px;
-        }
-        .header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8em;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            font-weight: 700;
-            letter-spacing: 2px;
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+            background-color: #FFFFFF;
         }
 
-        /* Steps Section Styling */
-        .steps-section {
+        /* Header */
+        .header {
             text-align: center;
-            margin: 30px 0;
-            padding: 20px;
-            background: rgba(0, 95, 80, 0.8);
-            border-radius: 10px;
+            margin-bottom: 16px;
         }
-        .steps-section .step {
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2E7D32;
+            margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 15px 0;
-            font-size: 1.2em;
-        }
-        .steps-section .arrow {
-            font-size: 1.8em;
-            color: #32CD32;
-            margin: 0 15px;
-        }
-        .steps-section .btn {
-            background-color: #32CD32;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: background-color 0.3s, transform 0.2s;
-            font-weight: bold;
-        }
-        .steps-section .btn:hover {
-            background-color: #28a428;
-            transform: scale(1.1);
         }
 
-        /* Table Container for Responsiveness */
-        .table-container {
-            overflow-x: auto;
-            margin-bottom: 30px;
-            position: relative;
+        .header h1 i {
+            margin-right: 8px;
+            color: #2E7D32;
         }
 
-        /* Step 2 Header Row */
-        .step-2-header {
-            background-color: #32CD32; /* Green to match buttons */
-            color: white;
-            padding: 10px;
+        /* Advice Text */
+        .advice-text {
             text-align: center;
-            font-size: 1.1em;
-            font-weight: bold;
-            border-radius: 10px 10px 0 0; /* Rounded top corners */
-        }
-        .step-2-header p {
-            margin: 0;
+            margin: 16px 0;
+            font-size: 16px;
+            color: #616161;
+            font-weight: 400;
         }
 
-        /* Table Styling */
+        /* Separator */
+        .separator {
+            width: 100%;
+            height: 1px;
+            background-color: #E0E0E0;
+            margin: 16px 0;
+        }
+
+        /* Table Container */
+        .table-container {
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        /* Jobs Table - Desktop */
         .jobs-table {
             width: 100%;
             border-collapse: collapse;
-            background: rgba(0, 77, 64, 0.7);
-            border-radius: 0 0 10px 10px; /* Rounded bottom corners */
-            overflow: hidden;
         }
+
         .jobs-table th, .jobs-table td {
-            padding: 18px;
+            padding: 14px;
             text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid #E0E0E0;
         }
+
         .jobs-table th {
-            font-weight: bold;
+            font-weight: 700;
             text-transform: uppercase;
-            background: rgba(0, 95, 80, 0.9);
+            background: #E0E0E0;
+            color: #212121;
+            font-size: 14px;
         }
+
+        .jobs-table td {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .jobs-table td:first-child {
+            font-weight: 700;
+        }
+
         .jobs-table tr:hover {
-            background-color: #005f50;
+            background-color: #E8F5E9;
+        }
+
+        /* Button */
+        .btn {
+            background-color: #2E7D32;
+            color: #FFFFFF;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 14px;
             transition: background-color 0.3s;
         }
 
-        /* Button Styling */
-        .btn {
-            background-color: #32CD32;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s, transform 0.2s;
-            font-weight: bold;
-        }
         .btn:hover {
-            background-color: #28a428;
-            transform: scale(1.1);
+            background-color: #388E3C;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .table-container {
+                overflow-x: visible;
+            }
+
+            .jobs-table thead {
+                display: none;
+            }
+
+            .jobs-table tbody tr {
+                display: block;
+                margin-bottom: 16px;
+                background-color: #FFFFFF;
+                border-radius: 8px;
+                padding: 14px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .jobs-table td {
+                display: block;
+                padding: 4px 0;
+            }
+
+            .jobs-table td:first-child {
+                font-size: 14px;
+                font-weight: 700;
+                margin-bottom: 8px;
+            }
+
+            .jobs-table td:nth-child(2)::before {
+                content: "Dates: ";
+                font-weight: 700;
+                color: #212121;
+            }
+
+            .jobs-table td:nth-child(3)::before {
+                content: "Location: ";
+                font-weight: 700;
+                color: #212121;
+            }
+
+            .jobs-table td:nth-child(4)::before {
+                content: "Pay per cleaner: ";
+                font-weight: 700;
+                color: #212121;
+            }
+
+            .jobs-table td:nth-child(5)::before {
+                content: "Hours per day: ";
+                font-weight: 700;
+                color: #212121;
+            }
+
+            .jobs-table td:last-child {
+                text-align: center;
+                margin-top: 8px;
+            }
+
+            .btn {
+                padding: 12px;
+                width: 100%;
+                height: 44px;
+                box-sizing: border-box;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="header">
-        <h1>Available Jobs</h1>
-    </div>
-
-    <!-- Steps Section -->
-    <div class="steps-section">
-        <div class="step">
-            <p><strong>Step 1:</strong> Sign Up Now</p>
-            <span class="arrow">→</span>
-            <a href="https://spruces.typeform.com/signup?typeform-source=spruces.co" class="btn">Sign Up</a>
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header">
+            <h1><i class="fas fa-broom"></i> Available Jobs</h1>
         </div>
-    </div>
 
-    <!-- Job Listings Table -->
-    <div class="table-container">
-        <div class="step-2-header">
-            <p><strong>Step 2:</strong> Click the "View More" buttons below to see more information of the job</p>
+        <!-- Advice Text -->
+        <div class="advice-text">
+            <p>Click on the 'View More' button to see detailed information about the job of your interest.</p>
         </div>
-        <table class="jobs-table">
-            <thead>
-                <tr>
-                    <th>What</th>
-                    <th>When</th>
-                    <th>Where</th>
-                    <th>Pay</th>
-                    <th>ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Job 1 -->
-                <tr>
-                    <td>Post construction cleaning</td>
-                    <td>To be assigned</td>
-                    <td>Richlands 4077</td>
-                    <td>1000 AUD - 8 to 10 hour days approx - 3 days</td>
-                    <td>
-                        <a href="https://sprucesaustralia.github.io/Richlands/index.html" class="btn">View More</a>
-                    </td>
-                </tr>
-                <!-- Job 2 -->
-                <tr>
-                    <td>Post construction cleaning</td>
-                    <td>To be assigned</td>
-                    <td>Suffolk park 2481</td>
-                    <td>400 AUD - 7 to 9 hour day approx</td>
-                    <td>
-                        <a href="https://docs.google.com/spreadsheets/d/1w1xJx63eDbwd_gln4hUWTvFDsDIayCfsWPfkxyon6bg/edit?usp=sharing" class="btn">View More</a>
-                    </td>
-                </tr>
-                <!-- Job 5 -->
-                <tr>
-                    <td>Post Construction Cleaning</td>
-                    <td>Starting 27 March</td>
-                    <td>21 Duporth Avenue, Maroochydore QLD 4558</td>
-                    <td>750 per cleaner - 7 to 9 hour day approx - 2 days</td>
-                    <td>
-                        <a href="https://sprucesaustralia.github.io/29-Duporth-Ave.-Maroochydore---Fitout/index.html" class="btn">View More</a>
-                    </td>
-                </tr>
-                <!-- New Job 6 -->
-                <tr>
-                    <td>Post Construction Cleaning Childcare Facility</td>
-                    <td>Starting 24 March<br>3 Visits:<br>1) Rough clean<br>2) Final clean<br>3) Touch up clean</td>
-                    <td>28-32 Kirkellen St, Berserker QLD 4701</td>
-                    <td>$1200 per cleaner - 8-9 hours day approx - 3 days</td>
-                    <td>
-                        <a href="https://sprucesaustralia.github.io/28-32-Kirkellen-st-Berserker-Post-Construction-Cleaning/index.html" class="btn">View More</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+
+        <!-- Separator -->
+        <div class="separator"></div>
+
+        <!-- Job Listings Table -->
+        <div class="table-container">
+            <table class="jobs-table">
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Dates</th>
+                        <th>Location</th>
+                        <th>Pay per cleaner</th>
+                        <th>Hours per day</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Job 1 -->
+                    <tr>
+                        <td>Post Construction Cleaning Childcare Facility</td>
+                        <td>Starting 24 March, 3 visits (rough clean, final clean, touch up clean)</td>
+                        <td>28-32 Kirkellen St, Berserker QLD 4701</td>
+                        <td>$1200</td>
+                        <td>8-9 hours</td>
+                        <td>
+                            <a href="https://sprucesaustralia.github.io/28-32-Kirkellen-st-Berserker-Post-Construction-Cleaning/index.html" class="btn">View More</a>
+                        </td>
+                    </tr>
+                    <!-- Job 2 -->
+                    <tr>
+                        <td>Post Construction Cleaning</td>
+                        <td>Starting 27 March, 2 days</td>
+                        <td>21 Duporth Avenue, Maroochydore QLD 4558</td>
+                        <td>$750</td>
+                        <td>7-9 hours</td>
+                        <td>
+                            <a href="https://sprucesaustralia.github.io/29-Duporth-Ave.-Maroochydore---Fitout/index.html" class="btn">View More</a>
+                        </td>
+                    </tr>
+                    <!-- Job 3 -->
+                    <tr>
+                        <td>Post Construction Cleaning</td>
+                        <td>To be assigned, 1 day</td>
+                        <td>Suffolk Park 2481</td>
+                        <td>$400</td>
+                        <td>7-9 hours</td>
+                        <td>
+                            <a href="https://docs.google.com/spreadsheets/d/1w1xJx63eDbwd_gln4hUWTvFDsDIayCfsWPfkxyon6bg/edit?usp=sharing" class="btn">View More</a>
+                        </td>
+                    </tr>
+                    <!-- Job 4 -->
+                    <tr>
+                        <td>Post Construction Cleaning</td>
+                        <td>To be assigned, 3 days</td>
+                        <td>Richlands 4077</td>
+                        <td>$1000</td>
+                        <td>8-10 hours</td>
+                        <td>
+                            <a href="https://sprucesaustralia.github.io/Richlands/index.html" class="btn">View More</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>
