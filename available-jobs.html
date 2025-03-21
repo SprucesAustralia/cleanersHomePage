@@ -7,367 +7,183 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-        }
-
+        /* Base Styles */
         body {
-            background-color: #F5F6F5;
+            background-color: #FFFFFF;
             color: #212121;
-            line-height: 1.6;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8; /* Increased for better readability */
         }
 
         .main-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px;
+            background-color: #FFFFFF;
         }
 
+        /* Header */
         .header {
             text-align: center;
-            padding: 40px 0;
+            margin-bottom: 16px;
         }
 
         .header h1 {
-            font-size: 36px;
+            font-size: 32px; /* Increased from 24px */
             font-weight: 700;
             color: #2E7D32;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .header h1 i {
-            margin-right: 10px;
-            color: #388E3C;
+            margin-right: 8px;
+            color: #2E7D32;
         }
 
+        /* Advice Text */
         .advice-text {
             text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .advice-text p {
-            font-size: 16px;
+            margin: 16px 0;
+            font-size: 18px; /* Increased from 16px */
             color: #616161;
+            font-weight: 400;
         }
 
+        /* Separator */
         .separator {
-            height: 2px;
+            width: 100%;
+            height: 1px;
             background-color: #E0E0E0;
-            margin: 20px 0;
+            margin: 16px 0;
         }
 
+        /* Table Container */
         .table-container {
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             overflow-x: auto;
         }
 
+        /* Jobs Table - Desktop */
         .jobs-table {
             width: 100%;
             border-collapse: collapse;
-            background-color: #FFFFFF;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
         }
 
         .jobs-table th, .jobs-table td {
-            padding: 15px;
+            padding: 18px; /* Increased from 14px */
             text-align: left;
             border-bottom: 1px solid #E0E0E0;
+            font-size: 16px; /* Increased from 14px */
+            line-height: 1.6; /* Added for better readability */
         }
 
         .jobs-table th {
-            background-color: #388E3C;
-            color: #FFFFFF;
             font-weight: 700;
             text-transform: uppercase;
+            background: #E0E0E0;
+            color: #212121;
         }
 
-        .jobs-table tr:nth-child(even) {
-            background-color: #F9F9F9;
+        .jobs-table td:first-child {
+            font-weight: 700;
         }
 
         .jobs-table tr:hover {
-            background-color: #EEEEEE;
+            background-color: #E8F5E9;
         }
 
+        /* Button */
         .btn {
-            background-color: #388E3C;
+            background-color: #2E7D32;
             color: #FFFFFF;
-            padding: 12px 25px;
+            padding: 14px 28px; /* Increased padding */
             border-radius: 8px;
             text-decoration: none;
             display: inline-block;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 16px; /* Increased from 14px */
+            transition: background-color 0.3s;
         }
 
         .btn:hover {
-            background-color: #2E7D32;
-        }
-
-        /* Comment Section */
-        .comment-section {
-            margin: 20px 0;
-            padding: 15px;
-            background-color: #F5F5F5;
-            border-radius: 8px;
-            border: 1px solid #E0E0E0;
-        }
-
-        .comment-section h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #2E7D32;
-            margin-bottom: 15px;
-        }
-
-        .comment-form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .comment-form textarea {
-            padding: 10px;
-            border: 1px solid #E0E0E0;
-            border-radius: 8px;
-            resize: vertical;
-            font-size: 14px;
-            background-color: #E8F5E9;
-        }
-
-        .comment-form button {
             background-color: #388E3C;
-            color: #FFFFFF;
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 14px;
         }
 
-        .comment-form button:hover {
-            background-color: #2E7D32;
-        }
-
-        .comment-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .comment {
-            background-color: #FFFFFF;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #E0E0E0;
-        }
-
-        .comment-username {
-            font-weight: 700;
-            color: #388E3C;
-            margin-bottom: 5px;
-        }
-
-        .comment-timestamp {
-            font-size: 12px;
-            color: #616161;
-            margin-bottom: 5px;
-        }
-
-        .comment-text {
-            font-size: 14px;
-        }
-
-        /* Auth Modal */
-        #auth-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .auth-modal-content {
-            background: #FFFFFF;
-            padding: 20px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 400px;
-            position: relative;
-        }
-
-        .auth-modal-content h2 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #2E7D32;
-            margin-bottom: 20px;
-        }
-
-        .auth-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .auth-form input {
-            padding: 10px;
-            border: 1px solid #E0E0E0;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        .auth-form button {
-            background-color: #388E3C;
-            color: #FFFFFF;
-            padding: 10px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-weight: 700;
-        }
-
-        .auth-form button:hover {
-            background-color: #2E7D32;
-        }
-
-        /* Mobile Responsive Design */
+        /* Mobile Styles */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 28px;
-            }
-
-            .advice-text p {
-                font-size: 14px;
-            }
-
-            .jobs-table, .jobs-table thead, .jobs-table tbody, .jobs-table th, .jobs-table td, .jobs-table tr {
-                display: block;
+            .table-container {
+                overflow-x: visible;
             }
 
             .jobs-table thead {
                 display: none;
             }
 
-            .jobs-table tr {
-                margin-bottom: 20px;
-                border: 1px solid #E0E0E0;
-                border-radius: 8px;
+            .jobs-table tbody tr {
+                display: block;
+                margin-bottom: 16px;
                 background-color: #FFFFFF;
+                border-radius: 8px;
+                padding: 14px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
 
             .jobs-table td {
                 display: block;
-                padding: 10px 15px;
-                border: none;
-                font-size: 14px;
+                padding: 4px 0;
+                font-size: 16px; /* Increased from 14px */
+                line-height: 1.6; /* Added for better readability */
             }
 
-            /* Job Details in Card Format */
-            .jobs-table td:nth-child(1) {
-                font-size: 18px;
+            .jobs-table td:first-child {
+                font-size: 16px;
                 font-weight: 700;
-                color: #212121;
-                padding: 15px;
-                border-bottom: 1px solid #E0E0E0;
-            }
-
-            .jobs-table td:nth-child(2),
-            .jobs-table td:nth-child(3),
-            .jobs-table td:nth-child(4),
-            .jobs-table td:nth-child(5) {
-                padding: 10px 15px;
-                line-height: 1.4;
+                margin-bottom: 8px;
             }
 
             .jobs-table td:nth-child(2)::before {
                 content: "Dates: ";
                 font-weight: 700;
-                color: #388E3C;
-                display: block;
-                margin-bottom: 5px;
+                color: #212121;
             }
 
             .jobs-table td:nth-child(3)::before {
                 content: "Location: ";
                 font-weight: 700;
-                color: #388E3C;
-                display: block;
-                margin-bottom: 5px;
+                color: #212121;
             }
 
             .jobs-table td:nth-child(4)::before {
                 content: "Pay per cleaner: ";
                 font-weight: 700;
-                color: #388E3C;
-                display: block;
-                margin-bottom: 5px;
+                color: #212121;
             }
 
             .jobs-table td:nth-child(5)::before {
                 content: "Hours per day: ";
                 font-weight: 700;
-                color: #388E3C;
-                display: block;
-                margin-bottom: 5px;
+                color: #212121;
             }
 
             .jobs-table td:last-child {
                 text-align: center;
-                padding: 15px;
+                margin-top: 12px; /* Added spacing above button */
             }
 
-            .jobs-table td:last-child a {
+            .btn {
+                padding: 14px;
                 width: 100%;
+                height: 44px;
                 box-sizing: border-box;
-            }
-
-            /* Comment Section in Mobile */
-            .comment-section {
-                margin: 15px;
-                padding: 15px;
-                background-color: #FFFFFF;
-                border: 1px solid #E0E0E0;
-            }
-
-            .comment-section h3 {
-                font-size: 16px;
-                color: #2E7D32;
-            }
-
-            .comment-form textarea {
-                font-size: 14px;
-                background-color: #F5F5F5;
-            }
-
-            .comment-form button {
-                font-size: 14px;
-                width: 100%;
-            }
-
-            .comment {
-                padding: 10px;
-            }
-
-            .comment-username {
-                font-size: 14px;
-            }
-
-            .comment-timestamp {
-                font-size: 10px;
-            }
-
-            .comment-text {
-                font-size: 12px;
+                font-size: 16px; /* Increased from 14px */
             }
         }
     </style>
@@ -377,7 +193,7 @@
     <div class="main-container">
         <!-- Header -->
         <div class="header">
-            <h1><i class="fas fa-broom"></i> Available Jobs</h1>
+            <h1><i class="fas fa-leaf"></i> Available Jobs</h1>
         </div>
 
         <!-- Advice Text -->
@@ -413,18 +229,6 @@
                             <a href="https://sprucesaustralia.github.io/28-32-Kirkellen-st-Berserker-Post-Construction-Cleaning/index.html" class="btn">View More</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="6">
-                            <div class="comment-section" data-job-id="job-1">
-                                <h3>Discussion for Post Construction Cleaning Childcare Facility</h3>
-                                <div class="comment-form">
-                                    <textarea class="comment-input" placeholder="Write your comment..." rows="4"></textarea>
-                                    <button class="submit-comment">Submit Comment</button>
-                                </div>
-                                <div class="comment-list"></div>
-                            </div>
-                        </td>
-                    </tr>
                     <!-- Job 2 -->
                     <tr>
                         <td>Post Construction Cleaning Maroochydore</td>
@@ -436,39 +240,15 @@
                             <a href="https://sprucesaustralia.github.io/29-Duporth-Ave.-Maroochydore---Fitout/index.html" class="btn">View More</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="6">
-                            <div class="comment-section" data-job-id="job-2">
-                                <h3>Discussion for Post Construction Cleaning Maroochydore</h3>
-                                <div class="comment-form">
-                                    <textarea class="comment-input" placeholder="Write your comment..." rows="4"></textarea>
-                                    <button class="submit-comment">Submit Comment</button>
-                                </div>
-                                <div class="comment-list"></div>
-                            </div>
-                        </td>
-                    </tr>
                     <!-- Job 3 -->
                     <tr>
-                        <td>Post Construction Cleaning Suffolk Park</td>
+                        <td>Post Construction Cleaning Suffol Park</td>
                         <td>To be assigned, 1 day</td>
                         <td>Suffolk Park 2481</td>
                         <td>$400</td>
                         <td>7-9 hours</td>
                         <td>
                             <a href="https://docs.google.com/spreadsheets/d/1w1xJx63eDbwd_gln4hUWTvFDsDIayCfsWPfkxyon6bg/edit?usp=sharing" class="btn">View More</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="6">
-                            <div class="comment-section" data-job-id="job-3">
-                                <h3>Discussion for Post Construction Cleaning Suffolk Park</h3>
-                                <div class="comment-form">
-                                    <textarea class="comment-input" placeholder="Write your comment..." rows="4"></textarea>
-                                    <button class="submit-comment">Submit Comment</button>
-                                </div>
-                                <div class="comment-list"></div>
-                            </div>
                         </td>
                     </tr>
                     <!-- Job 4 -->
@@ -482,173 +262,9 @@
                             <a href="https://sprucesaustralia.github.io/Richlands/index.html" class="btn">View More</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="6">
-                            <div class="comment-section" data-job-id="job-4">
-                                <h3>Discussion for Post Construction Cleaning Richlands</h3>
-                                <div class="comment-form">
-                                    <textarea class="comment-input" placeholder="Write your comment..." rows="4"></textarea>
-                                    <button class="submit-comment">Submit Comment</button>
-                                </div>
-                                <div class="comment-list"></div>
-                            </div>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>
-
-        <!-- Auth Modal -->
-        <div id="auth-modal" style="display:none;">
-            <div class="auth-modal-content">
-                <span class="close-modal">×</span>
-                <h2 id="auth-title">Login</h2>
-                <form class="auth-form" id="auth-form">
-                    <input type="text" id="username" placeholder="Username" required>
-                    <input type="password" id="password" placeholder="Password" required>
-                    <button type="submit">Login</button>
-                </form>
-            </div>
-        </div>
     </div>
-
-    <!-- Supabase Client -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-        // Initialize Supabase
-        const supabase = Supabase.createClient('https://cuoqvccjoymctjucrhbb.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1b3F2Y2Nqb3ltY3RqdWNyaGJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEzMzM1MzAsImV4cCI6MjA1NjkwOTUzMH0.Ca1kkg26rYt-TNMmXbBo2Gg1sYrIKK0Y1vxJwPpxvnA');
-
-        // Global variables
-        let currentUser = null;
-
-        // DOM Elements
-        const authModal = document.getElementById('auth-modal');
-        const authTitle = document.getElementById('auth-title');
-        const authForm = document.getElementById('auth-form');
-
-        // Check if user is logged in on page load
-        async function checkUser() {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (user) {
-                const username = user.email.split('@')[0];
-                currentUser = { id: user.id, username };
-                authModal.style.display = 'none';
-                loadAllComments();
-            } else {
-                currentUser = null;
-                openAuthModal();
-            }
-        }
-
-        // Open Auth Modal
-        function openAuthModal() {
-            authTitle.textContent = 'Login';
-            authModal.style.display = 'flex';
-        }
-
-        // Close Auth Modal
-        function closeAuthModal() {
-            authModal.style.display = 'none';
-            authForm.reset();
-        }
-
-        // Handle Auth Form Submission
-        authForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const email = `${username}@spruces.com`;
-
-            const { error } = await supabase.auth.signInWithPassword({ email, password });
-            if (error) {
-                alert('Login failed: ' + error.message);
-            } else {
-                closeAuthModal();
-                checkUser();
-            }
-        });
-
-        // Load Comments for a Specific Job
-        async function loadComments(jobId, commentList) {
-            const { data, error } = await supabase
-                .from('comments')
-                .select('*')
-                .eq('job_id', jobId)
-                .order('created_at', { ascending: false });
-
-            if (error) {
-                console.error('Error loading comments:', error);
-                return;
-            }
-
-            commentList.innerHTML = '';
-            data.forEach(comment => {
-                const commentDiv = document.createElement('div');
-                commentDiv.className = 'comment';
-                commentDiv.innerHTML = `
-                    <div class="comment-username">${comment.username}</div>
-                    <div class="comment-timestamp">${new Date(comment.created_at).toLocaleString()}</div>
-                    <div class="comment-text">${comment.comment}</div>
-                `;
-                commentList.appendChild(commentDiv);
-            });
-        }
-
-        // Load Comments for All Jobs
-        function loadAllComments() {
-            document.querySelectorAll('.comment-section').forEach(section => {
-                const jobId = section.getAttribute('data-job-id');
-                const commentList = section.querySelector('.comment-list');
-                loadComments(jobId, commentList);
-            });
-        }
-
-        // Submit Comment
-        document.querySelectorAll('.submit-comment').forEach(btn => {
-            btn.addEventListener('click', async () => {
-                if (!currentUser) {
-                    alert('Please log in to comment.');
-                    openAuthModal();
-                    return;
-                }
-
-                const commentSection = btn.closest('.comment-section');
-                const jobId = commentSection.getAttribute('data-job-id');
-                const commentInput = commentSection.querySelector('.comment-input');
-                const commentText = commentInput.value.trim();
-
-                if (!commentText) {
-                    alert('Please enter a comment.');
-                    return;
-                }
-
-                const { error } = await supabase
-                    .from('comments')
-                    .insert({
-                        job_id: jobId,
-                        username: currentUser.username,
-                        comment: commentText
-                    });
-
-                if (error) {
-                    alert('Error submitting comment: ' + error.message);
-                } else {
-                    commentInput.value = '';
-                    loadComments(jobId, commentSection.querySelector('.comment-list'));
-                }
-            });
-        });
-
-        // Event Listeners for Auth Modal
-        document.querySelectorAll('.close-modal').forEach(btn => {
-            btn.addEventListener('click', closeAuthModal);
-        });
-        document.getElementById('auth-modal').addEventListener('click', function(e) {
-            if (e.target === this) closeAuthModal();
-        });
-
-        // Initial Check
-        checkUser();
-    </script>
 </body>
 </html>
